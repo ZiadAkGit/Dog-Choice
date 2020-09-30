@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "427546273054",
+    "firebase_url": "https://wheelofdishes.firebaseio.com",
+    "project_id": "wheelofdishes",
+    "storage_bucket": "wheelofdishes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427546273054:android:7366065b1af2bd77f6950f",
+        "android_client_info": {
+          "package_name": "ziad.ak.wheelofdishes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427546273054-qodicvqiubova3apudh3d7ubiok8fqa5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdnJfl2mzHcUtPvU65xtCpknY-rbZLCyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427546273054-qodicvqiubova3apudh3d7ubiok8fqa5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
