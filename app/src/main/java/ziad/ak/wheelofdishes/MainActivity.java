@@ -38,9 +38,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dog : snapshot.getChildren()) {
-                            Log.d("Child iS: ", dog.getKey());
                             String dogArt = dog.getValue().toString();
-                            Log.d(dog.getKey() + " : " , dogArt);
+                            Log.d("Dog is: " + dog.getKey() , dogArt);
                         }
                     }
                     @Override
