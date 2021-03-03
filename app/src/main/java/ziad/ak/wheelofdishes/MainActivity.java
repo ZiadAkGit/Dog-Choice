@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView txt = findViewById(R.id.textView2);
         Button btn1 = findViewById(R.id.button);
         Button btn2 = findViewById(R.id.button2);
         Button btn3 = findViewById(R.id.button3);
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 choice = 3;
             }
         });
+        txt.setText(R.string.adapt);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +74,10 @@ public class MainActivity extends AppCompatActivity {
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Log.d("Choice is", String.valueOf(choice));
                         for (DataSnapshot dog : snapshot.getChildren()) {
+                            //split the attributes to Text = Number
                             String[] dogVal = dog.getValue().toString().split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+                            //adding for each dog it's attributes in a hashmap split
                             for (int i = 0; i < dogVal.length - 1; i++){
                                 String dogVal1 = dogVal[i];
                                 if(dogVal1.length()==1){
@@ -81,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                                     dogS.put(dog.getKey(),dogSS);
                                 }
                             }
+
                             Log.d("HASHMAP IS", String.valueOf(dogS));
                         }
                     }

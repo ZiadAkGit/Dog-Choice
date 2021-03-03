@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Which Dog Are You</string>
     <string name="clicktest">ClickTest</string>
+    <string name="adapt">Adapts Well To Apartment Living</string>
+    <string name="good">Good For Novice Owners</string>
+    <string name="Sensitivity">Sensitivity Level</string>
+    <string name="lonelyness">Tolerates Being Alone</string>
+    <string name="Cold">Tolerates Cold Weather</string>
+    <string name="Hot">Tolerates Hot Weather</string>
+    <string name="Energy">Energy Level</string>
+    <string name="Intensity">Intensity</string>
+    <string name="Exercise">Exercise Needs</string>
+    <string name="Playfulness">Potential For Playfulness</string>
 </resources>
