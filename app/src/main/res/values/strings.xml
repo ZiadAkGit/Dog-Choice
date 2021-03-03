@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">WheelOfDishes</string>
+    <string name="app_name">Which Dog Are You</string>
+    <string name="clicktest">ClickTest</string>
 </resources>
