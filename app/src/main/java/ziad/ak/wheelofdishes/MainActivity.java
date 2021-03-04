@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
-    int count = 7;
+    int count = 8;
     int choice = 0;
     List<Integer> choices = new ArrayList<Integer>();;
     TextView txt;
@@ -46,40 +46,46 @@ public class MainActivity extends AppCompatActivity {
                 switch (count){
                     case 0:
                         choices.add(choice);
-                        txt.setText(R.string.adapt);
+                        txt.setText("All Good Click on the button in the bottom of the page");
                         count--;
                         break;
                     case 1:
                         choices.add(choice);
-                        txt.setText(R.string.Hot);
+                        txt.setText(R.string.adapt);
                         count--;
                         break;
                     case 2:
                         choices.add(choice);
-                        txt.setText(R.string.Cold);
+                        txt.setText(R.string.Hot);
                         count--;
                         break;
                     case 3:
                         choices.add(choice);
-                        txt.setText(R.string.lonelyness);
+                        txt.setText(R.string.Cold);
                         count--;
                         break;
                     case 4:
                         choices.add(choice);
-                        txt.setText(R.string.Sensitivity);
+                        txt.setText(R.string.lonelyness);
                         count--;
                         break;
                     case 5:
                         choices.add(choice);
-                        txt.setText(R.string.Intensity);
+                        txt.setText(R.string.Sensitivity);
                         count--;
                         break;
                     case 6:
                         choices.add(choice);
-                        txt.setText(R.string.good);
+                        txt.setText(R.string.Intensity);
                         count--;
                         break;
                     case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                        break;
+
+                    case 8:
                         choices.add(choice);
                         txt.setText(R.string.Exercise);
                         count--;
@@ -94,40 +100,46 @@ public class MainActivity extends AppCompatActivity {
                 switch (count){
                     case 0:
                         choices.add(choice);
-                        txt.setText(R.string.adapt);
+                        txt.setText("All Good Click on the button in the bottom of the page");
                         count--;
                         break;
                     case 1:
                         choices.add(choice);
-                        txt.setText(R.string.Hot);
+                        txt.setText(R.string.adapt);
                         count--;
                         break;
                     case 2:
                         choices.add(choice);
-                        txt.setText(R.string.Cold);
+                        txt.setText(R.string.Hot);
                         count--;
                         break;
                     case 3:
                         choices.add(choice);
-                        txt.setText(R.string.lonelyness);
+                        txt.setText(R.string.Cold);
                         count--;
                         break;
                     case 4:
                         choices.add(choice);
-                        txt.setText(R.string.Sensitivity);
+                        txt.setText(R.string.lonelyness);
                         count--;
                         break;
                     case 5:
                         choices.add(choice);
-                        txt.setText(R.string.Intensity);
+                        txt.setText(R.string.Sensitivity);
                         count--;
                         break;
                     case 6:
                         choices.add(choice);
-                        txt.setText(R.string.good);
+                        txt.setText(R.string.Intensity);
                         count--;
                         break;
                     case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                        break;
+
+                    case 8:
                         choices.add(choice);
                         txt.setText(R.string.Exercise);
                         count--;
@@ -142,40 +154,46 @@ public class MainActivity extends AppCompatActivity {
                 switch (count){
                     case 0:
                         choices.add(choice);
-                        txt.setText(R.string.adapt);
+                        txt.setText("All Good Click on the button in the bottom of the page");
                         count--;
                         break;
                     case 1:
                         choices.add(choice);
-                        txt.setText(R.string.Hot);
+                        txt.setText(R.string.adapt);
                         count--;
                         break;
                     case 2:
                         choices.add(choice);
-                        txt.setText(R.string.Cold);
+                        txt.setText(R.string.Hot);
                         count--;
                         break;
                     case 3:
                         choices.add(choice);
-                        txt.setText(R.string.lonelyness);
+                        txt.setText(R.string.Cold);
                         count--;
                         break;
                     case 4:
                         choices.add(choice);
-                        txt.setText(R.string.Sensitivity);
+                        txt.setText(R.string.lonelyness);
                         count--;
                         break;
                     case 5:
                         choices.add(choice);
-                        txt.setText(R.string.Intensity);
+                        txt.setText(R.string.Sensitivity);
                         count--;
                         break;
                     case 6:
                         choices.add(choice);
-                        txt.setText(R.string.good);
+                        txt.setText(R.string.Intensity);
                         count--;
                         break;
                     case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                        break;
+
+                    case 8:
                         choices.add(choice);
                         txt.setText(R.string.Exercise);
                         count--;
@@ -190,40 +208,46 @@ public class MainActivity extends AppCompatActivity {
                 switch (count){
                     case 0:
                         choices.add(choice);
-                        txt.setText(R.string.adapt);
+                        txt.setText("All Good Click on the button in the bottom of the page");
                         count--;
                         break;
                     case 1:
                         choices.add(choice);
-                        txt.setText(R.string.Hot);
+                        txt.setText(R.string.adapt);
                         count--;
                         break;
                     case 2:
                         choices.add(choice);
-                        txt.setText(R.string.Cold);
+                        txt.setText(R.string.Hot);
                         count--;
                         break;
                     case 3:
                         choices.add(choice);
-                        txt.setText(R.string.lonelyness);
+                        txt.setText(R.string.Cold);
                         count--;
                         break;
                     case 4:
                         choices.add(choice);
-                        txt.setText(R.string.Sensitivity);
+                        txt.setText(R.string.lonelyness);
                         count--;
                         break;
                     case 5:
                         choices.add(choice);
-                        txt.setText(R.string.Intensity);
+                        txt.setText(R.string.Sensitivity);
                         count--;
                         break;
                     case 6:
                         choices.add(choice);
-                        txt.setText(R.string.good);
+                        txt.setText(R.string.Intensity);
                         count--;
                         break;
                     case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                        break;
+
+                    case 8:
                         choices.add(choice);
                         txt.setText(R.string.Exercise);
                         count--;
@@ -238,40 +262,46 @@ public class MainActivity extends AppCompatActivity {
                 switch (count){
                     case 0:
                         choices.add(choice);
-                        txt.setText(R.string.adapt);
+                        txt.setText("All Good Click on the button in the bottom of the page");
                         count--;
                         break;
                     case 1:
                         choices.add(choice);
-                        txt.setText(R.string.Hot);
+                        txt.setText(R.string.adapt);
                         count--;
                         break;
                     case 2:
                         choices.add(choice);
-                        txt.setText(R.string.Cold);
+                        txt.setText(R.string.Hot);
                         count--;
                         break;
                     case 3:
                         choices.add(choice);
-                        txt.setText(R.string.lonelyness);
+                        txt.setText(R.string.Cold);
                         count--;
                         break;
                     case 4:
                         choices.add(choice);
-                        txt.setText(R.string.Sensitivity);
+                        txt.setText(R.string.lonelyness);
                         count--;
                         break;
                     case 5:
                         choices.add(choice);
-                        txt.setText(R.string.Intensity);
+                        txt.setText(R.string.Sensitivity);
                         count--;
                         break;
                     case 6:
                         choices.add(choice);
-                        txt.setText(R.string.good);
+                        txt.setText(R.string.Intensity);
                         count--;
                         break;
                     case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                        break;
+
+                    case 8:
                         choices.add(choice);
                         txt.setText(R.string.Exercise);
                         count--;
@@ -300,15 +330,17 @@ public class MainActivity extends AppCompatActivity {
                                 String energy = String.valueOf(choices.get(0));
                                 String ex = String.valueOf(choices.get(1));
                                 String good = String.valueOf(choices.get(2));
-                                String sen = String.valueOf(choices.get(3));
-                                String alone = String.valueOf(choices.get(4));
-                                String cold = String.valueOf(choices.get(5));
-                                String hot = String.valueOf(choices.get(6));
-                                String adapt = String.valueOf(choices.get(7));
+                                String intes = String.valueOf(choices.get(3));
+                                String sen = String.valueOf(choices.get(4));
+                                String alone = String.valueOf(choices.get(5));
+                                String cold = String.valueOf(choices.get(6));
+                                String hot = String.valueOf(choices.get(7));
+                                String adapt = String.valueOf(choices.get(8));
                                 if(energy.equalsIgnoreCase(list.get(0)) && ex.equalsIgnoreCase(list.get(1)) && good.equalsIgnoreCase(list.get(2))
-                                        && sen.equalsIgnoreCase(list.get(3)) && alone.equalsIgnoreCase(list.get(4)) && cold.equalsIgnoreCase(list.get(5))
-                                        && hot.equalsIgnoreCase(list.get(6)) && adapt.equalsIgnoreCase(list.get(7))){
+                                        && intes.equalsIgnoreCase(list.get(3)) && sen.equalsIgnoreCase(list.get(4)) && alone.equalsIgnoreCase(list.get(5))
+                                        && cold.equalsIgnoreCase(list.get(6)) && hot.equalsIgnoreCase(list.get(7)) && adapt.equalsIgnoreCase(list.get(8))){
                                     Toast.makeText(MainActivity.this, "You Are a " + dogName + " DOG!", Toast.LENGTH_LONG).show();
+                                    break;
                                 }
                             }
                         }
