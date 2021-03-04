@@ -17,82 +17,72 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
-    int choice = 0;
-    HashMap<String, HashMap<String,String>> dogS = new HashMap<String, HashMap<String,String>>();
-    HashMap<String,String> dogSS = new HashMap<String,String>();
+    HashMap<String, String> dishes_re = new HashMap<String, String>();
+    HashMap<String, String> dessert_re = new HashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-        TextView txt = findViewById(R.id.textView2);
-        Button btn1 = findViewById(R.id.button);
-        Button btn2 = findViewById(R.id.button2);
-        Button btn3 = findViewById(R.id.button3);
-        Button btn4 = findViewById(R.id.button6);
-        Button btn5 = findViewById(R.id.button5);
-        Button btn6 = findViewById(R.id.button4);
-        btn2.setOnClickListener(new View.OnClickListener() {
+        Button dishesbtn = findViewById(R.id.btn1);
+        Button dessertbtn = findViewById(R.id.btn2);
+        final TextView txt = findViewById(R.id.textView);
+        final TextView txt2 = findViewById(R.id.textView2);
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                choice = 1;
-            }
-        });
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                choice = 2;
-            }
-        });
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                choice = 5;
-            }
-        });
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                choice = 4;
-            }
-        });
-        btn6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                choice = 3;
-            }
-        });
-        txt.setText(R.string.adapt);
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot dog : snapshot.getChildren()) {
-                            //split the attributes to Text = Number
-                            String[] dogVal = dog.getValue().toString().split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
-                            //adding for each dog it's attributes in a hashmap split
-                            for (int i = 0; i < dogVal.length - 1; i++){
-                                String dogVal1 = dogVal[i];
-                                if(dogVal1.length()==1){
-                                    dogSS.put(dogVal[i-1],dogVal1);
-                                    dogS.put(dog.getKey(),dogSS);
-                                }
-                            }
-
-                            Log.d("HASHMAP IS", String.valueOf(dogS));
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot child : snapshot.getChildren()) {
+                    Log.d("Child iS: " , child.getKey());
+                    if(child.getKey().trim().equalsIgnoreCase("Dishes")){
+                        for (DataSnapshot dish : child.getChildren()) {
+                            dishes_re.put(dish.getKey(),dish.getValue().toString());
+                        }
+                    }else if(child.getKey().trim().equalsIgnoreCase("Desserts")){
+                        for (DataSnapshot dessert : child.getChildren()) {
+                            dessert_re.put(dessert.getKey(),dessert.getValue().toString());
                         }
                     }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                }
+                Log.d("HashMaps are: " , "desserts ->" + dessert_re.size() + " dishes ->" + dishes_re.size());
+            }
 
-                    }});
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        dishesbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random r = new Random();
+                int randomNumber = r.nextInt(dishes_re.size()-1);
+                String[] hmapKeys = dishes_re.keySet().toString().replace("[", "").replace("]", "").trim().split(",");
+                String choice = hmapKeys[randomNumber].trim();
+                txt2.setText("Recipe: \n" + dishes_re.get(choice));
+                txt2.setAllCaps(true);
+                txt.setText(choice);
+                txt.setAllCaps(true);
+            }
+        });
+
+        dessertbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random r = new Random();
+                int randomNumber = r.nextInt(dessert_re.size()-1);
+                String[] hmapKeys = dessert_re.keySet().toString().replace("[", "").replace("]", "").trim().split(",");
+                String choice = hmapKeys[randomNumber].trim();
+                txt2.setText("Recipe: \n" + dessert_re.get(choice));
+                txt2.setAllCaps(true);
+                txt.setText(choice);
+                txt.setAllCaps(true);
             }
         });
     }
