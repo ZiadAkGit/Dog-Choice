@@ -16,15 +16,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
-    int count = 8;
+    int count = 7;
     int choice = 0;
-    List<Integer> choices = null;
+    List<Integer> choices = new ArrayList<Integer>();;
     TextView txt;
 
     @Override
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Button btn4 = findViewById(R.id.button6);
         Button btn5 = findViewById(R.id.button5);
         Button btn6 = findViewById(R.id.button4);
+        txt.setText(R.string.Energy);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -238,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        txt.setText(R.string.Energy);
+
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
