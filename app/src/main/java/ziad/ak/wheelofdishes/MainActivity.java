@@ -48,34 +48,42 @@ public class MainActivity extends AppCompatActivity {
                         choices.add(choice);
                         txt.setText(R.string.adapt);
                         count--;
+                        break;
                     case 1:
                         choices.add(choice);
                         txt.setText(R.string.Hot);
                         count--;
+                        break;
                     case 2:
                         choices.add(choice);
                         txt.setText(R.string.Cold);
                         count--;
+                        break;
                     case 3:
                         choices.add(choice);
                         txt.setText(R.string.lonelyness);
                         count--;
+                        break;
                     case 4:
                         choices.add(choice);
                         txt.setText(R.string.Sensitivity);
                         count--;
+                        break;
                     case 5:
                         choices.add(choice);
                         txt.setText(R.string.Intensity);
                         count--;
+                        break;
                     case 6:
                         choices.add(choice);
                         txt.setText(R.string.good);
                         count--;
+                        break;
                     case 7:
                         choices.add(choice);
                         txt.setText(R.string.Exercise);
                         count--;
+                        break;
                 }
             }
         });
@@ -88,114 +96,42 @@ public class MainActivity extends AppCompatActivity {
                         choices.add(choice);
                         txt.setText(R.string.adapt);
                         count--;
+                        break;
                     case 1:
                         choices.add(choice);
                         txt.setText(R.string.Hot);
                         count--;
+                        break;
                     case 2:
                         choices.add(choice);
                         txt.setText(R.string.Cold);
                         count--;
+                        break;
                     case 3:
                         choices.add(choice);
                         txt.setText(R.string.lonelyness);
                         count--;
+                        break;
                     case 4:
                         choices.add(choice);
                         txt.setText(R.string.Sensitivity);
                         count--;
+                        break;
                     case 5:
                         choices.add(choice);
                         txt.setText(R.string.Intensity);
                         count--;
+                        break;
                     case 6:
                         choices.add(choice);
                         txt.setText(R.string.good);
                         count--;
+                        break;
                     case 7:
                         choices.add(choice);
                         txt.setText(R.string.Exercise);
                         count--;
-                }
-            }
-        });
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                choice = 5;
-                switch (count){
-                    case 0:
-                        choices.add(choice);
-                        txt.setText(R.string.adapt);
-                        count--;
-                    case 1:
-                        choices.add(choice);
-                        txt.setText(R.string.Hot);
-                        count--;
-                    case 2:
-                        choices.add(choice);
-                        txt.setText(R.string.Cold);
-                        count--;
-                    case 3:
-                        choices.add(choice);
-                        txt.setText(R.string.lonelyness);
-                        count--;
-                    case 4:
-                        choices.add(choice);
-                        txt.setText(R.string.Sensitivity);
-                        count--;
-                    case 5:
-                        choices.add(choice);
-                        txt.setText(R.string.Intensity);
-                        count--;
-                    case 6:
-                        choices.add(choice);
-                        txt.setText(R.string.good);
-                        count--;
-                    case 7:
-                        choices.add(choice);
-                        txt.setText(R.string.Exercise);
-                        count--;
-                }
-            }
-        });
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                choice = 4;
-                switch (count){
-                    case 0:
-                        choices.add(choice);
-                        txt.setText(R.string.adapt);
-                        count--;
-                    case 1:
-                        choices.add(choice);
-                        txt.setText(R.string.Hot);
-                        count--;
-                    case 2:
-                        choices.add(choice);
-                        txt.setText(R.string.Cold);
-                        count--;
-                    case 3:
-                        choices.add(choice);
-                        txt.setText(R.string.lonelyness);
-                        count--;
-                    case 4:
-                        choices.add(choice);
-                        txt.setText(R.string.Sensitivity);
-                        count--;
-                    case 5:
-                        choices.add(choice);
-                        txt.setText(R.string.Intensity);
-                        count--;
-                    case 6:
-                        choices.add(choice);
-                        txt.setText(R.string.good);
-                        count--;
-                    case 7:
-                        choices.add(choice);
-                        txt.setText(R.string.Exercise);
-                        count--;
+                        break;
                 }
             }
         });
@@ -208,48 +144,153 @@ public class MainActivity extends AppCompatActivity {
                         choices.add(choice);
                         txt.setText(R.string.adapt);
                         count--;
+                        break;
                     case 1:
                         choices.add(choice);
                         txt.setText(R.string.Hot);
                         count--;
+                        break;
                     case 2:
                         choices.add(choice);
                         txt.setText(R.string.Cold);
                         count--;
+                        break;
                     case 3:
                         choices.add(choice);
                         txt.setText(R.string.lonelyness);
                         count--;
+                        break;
                     case 4:
                         choices.add(choice);
                         txt.setText(R.string.Sensitivity);
                         count--;
+                        break;
                     case 5:
                         choices.add(choice);
                         txt.setText(R.string.Intensity);
                         count--;
+                        break;
                     case 6:
                         choices.add(choice);
                         txt.setText(R.string.good);
                         count--;
+                        break;
                     case 7:
                         choices.add(choice);
                         txt.setText(R.string.Exercise);
                         count--;
+                        break;
+                }
+            }
+        });
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choice = 4;
+                switch (count){
+                    case 0:
+                        choices.add(choice);
+                        txt.setText(R.string.adapt);
+                        count--;
+                        break;
+                    case 1:
+                        choices.add(choice);
+                        txt.setText(R.string.Hot);
+                        count--;
+                        break;
+                    case 2:
+                        choices.add(choice);
+                        txt.setText(R.string.Cold);
+                        count--;
+                        break;
+                    case 3:
+                        choices.add(choice);
+                        txt.setText(R.string.lonelyness);
+                        count--;
+                        break;
+                    case 4:
+                        choices.add(choice);
+                        txt.setText(R.string.Sensitivity);
+                        count--;
+                        break;
+                    case 5:
+                        choices.add(choice);
+                        txt.setText(R.string.Intensity);
+                        count--;
+                        break;
+                    case 6:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                        break;
+                    case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.Exercise);
+                        count--;
+                        break;
+                }
+            }
+        });
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choice = 5;
+                switch (count){
+                    case 0:
+                        choices.add(choice);
+                        txt.setText(R.string.adapt);
+                        count--;
+                        break;
+                    case 1:
+                        choices.add(choice);
+                        txt.setText(R.string.Hot);
+                        count--;
+                        break;
+                    case 2:
+                        choices.add(choice);
+                        txt.setText(R.string.Cold);
+                        count--;
+                        break;
+                    case 3:
+                        choices.add(choice);
+                        txt.setText(R.string.lonelyness);
+                        count--;
+                        break;
+                    case 4:
+                        choices.add(choice);
+                        txt.setText(R.string.Sensitivity);
+                        count--;
+                        break;
+                    case 5:
+                        choices.add(choice);
+                        txt.setText(R.string.Intensity);
+                        count--;
+                        break;
+                    case 6:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                        break;
+                    case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.Exercise);
+                        count--;
+                        break;
                 }
             }
         });
 
-
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (count == 0) {
+                if (count <= 0) {
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            //For each dog in the list
                             for (DataSnapshot dog : snapshot.getChildren()) {
                                 String dogName = dog.getKey();
+                                //For each attribute for the dog ^ in the dog list
                                 for (DataSnapshot dogAttributes : dog.getChildren()) {
                                     String attribute = dogAttributes.getKey();
                                     String attributeValue = (String) dogAttributes.getValue();
