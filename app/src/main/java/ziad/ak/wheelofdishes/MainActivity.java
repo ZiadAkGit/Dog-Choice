@@ -243,22 +243,29 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot dog : snapshot.getChildren()) {
-                            String dogName = dog.getKey();
-                            for (DataSnapshot dogAttributes : dog.getChildren()) {
-                                String attribute = dogAttributes.getKey();
-                                String attributeValue = (String) dogAttributes.getValue();
-                                
+                if (count == 0) {
+                    myRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot dog : snapshot.getChildren()) {
+                                String dogName = dog.getKey();
+                                for (DataSnapshot dogAttributes : dog.getChildren()) {
+                                    String attribute = dogAttributes.getKey();
+                                    String attributeValue = (String) dogAttributes.getValue();
+
+                                }
                             }
                         }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
 
-                    }});
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Please Answer ALL QUESTIONS!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
