@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             Log.d("HASHMAP IS", String.valueOf(dogS));
+                            
                         }
                     }
                     @Override
