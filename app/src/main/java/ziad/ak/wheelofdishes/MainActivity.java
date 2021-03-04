@@ -22,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     int choice = 0;
-    HashMap<String, HashMap<String,String>> dogS = new HashMap<String, HashMap<String,String>>();
-    HashMap<String,String> dogSS = new HashMap<String,String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,18 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dog : snapshot.getChildren()) {
-                            //split the attributes to Text = Number
-                            String[] dogVal = dog.getValue().toString().split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
-                            //adding for each dog it's attributes in a hashmap split
-                            for (int i = 0; i < dogVal.length - 1; i++){
-                                String dogVal1 = dogVal[i];
-                                if(dogVal1.length()==1){
-                                    dogSS.put(dogVal[i-1],dogVal1);
-                                    dogS.put(dog.getKey(),dogSS);
-                                }
-                            }
 
-                            Log.d("HASHMAP IS", String.valueOf(dogS));
                         }
                     }
                     @Override
