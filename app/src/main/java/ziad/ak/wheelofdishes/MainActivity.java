@@ -17,18 +17,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    int count = 8;
     int choice = 0;
-
+    List<Integer> choices = null;
+    TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView txt = findViewById(R.id.textView2);
+        txt = findViewById(R.id.textView2);
         Button btn1 = findViewById(R.id.button);
         Button btn2 = findViewById(R.id.button2);
         Button btn3 = findViewById(R.id.button3);
@@ -39,33 +42,203 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 choice = 1;
+                switch (count){
+                    case 0:
+                        choices.add(choice);
+                        txt.setText(R.string.adapt);
+                        count--;
+                    case 1:
+                        choices.add(choice);
+                        txt.setText(R.string.Hot);
+                        count--;
+                    case 2:
+                        choices.add(choice);
+                        txt.setText(R.string.Cold);
+                        count--;
+                    case 3:
+                        choices.add(choice);
+                        txt.setText(R.string.lonelyness);
+                        count--;
+                    case 4:
+                        choices.add(choice);
+                        txt.setText(R.string.Sensitivity);
+                        count--;
+                    case 5:
+                        choices.add(choice);
+                        txt.setText(R.string.Intensity);
+                        count--;
+                    case 6:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                    case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.Exercise);
+                        count--;
+                }
             }
         });
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 choice = 2;
+                switch (count){
+                    case 0:
+                        choices.add(choice);
+                        txt.setText(R.string.adapt);
+                        count--;
+                    case 1:
+                        choices.add(choice);
+                        txt.setText(R.string.Hot);
+                        count--;
+                    case 2:
+                        choices.add(choice);
+                        txt.setText(R.string.Cold);
+                        count--;
+                    case 3:
+                        choices.add(choice);
+                        txt.setText(R.string.lonelyness);
+                        count--;
+                    case 4:
+                        choices.add(choice);
+                        txt.setText(R.string.Sensitivity);
+                        count--;
+                    case 5:
+                        choices.add(choice);
+                        txt.setText(R.string.Intensity);
+                        count--;
+                    case 6:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                    case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.Exercise);
+                        count--;
+                }
             }
         });
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 choice = 5;
+                switch (count){
+                    case 0:
+                        choices.add(choice);
+                        txt.setText(R.string.adapt);
+                        count--;
+                    case 1:
+                        choices.add(choice);
+                        txt.setText(R.string.Hot);
+                        count--;
+                    case 2:
+                        choices.add(choice);
+                        txt.setText(R.string.Cold);
+                        count--;
+                    case 3:
+                        choices.add(choice);
+                        txt.setText(R.string.lonelyness);
+                        count--;
+                    case 4:
+                        choices.add(choice);
+                        txt.setText(R.string.Sensitivity);
+                        count--;
+                    case 5:
+                        choices.add(choice);
+                        txt.setText(R.string.Intensity);
+                        count--;
+                    case 6:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                    case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.Exercise);
+                        count--;
+                }
             }
         });
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 choice = 4;
+                switch (count){
+                    case 0:
+                        choices.add(choice);
+                        txt.setText(R.string.adapt);
+                        count--;
+                    case 1:
+                        choices.add(choice);
+                        txt.setText(R.string.Hot);
+                        count--;
+                    case 2:
+                        choices.add(choice);
+                        txt.setText(R.string.Cold);
+                        count--;
+                    case 3:
+                        choices.add(choice);
+                        txt.setText(R.string.lonelyness);
+                        count--;
+                    case 4:
+                        choices.add(choice);
+                        txt.setText(R.string.Sensitivity);
+                        count--;
+                    case 5:
+                        choices.add(choice);
+                        txt.setText(R.string.Intensity);
+                        count--;
+                    case 6:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                    case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.Exercise);
+                        count--;
+                }
             }
         });
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 choice = 3;
+                switch (count){
+                    case 0:
+                        choices.add(choice);
+                        txt.setText(R.string.adapt);
+                        count--;
+                    case 1:
+                        choices.add(choice);
+                        txt.setText(R.string.Hot);
+                        count--;
+                    case 2:
+                        choices.add(choice);
+                        txt.setText(R.string.Cold);
+                        count--;
+                    case 3:
+                        choices.add(choice);
+                        txt.setText(R.string.lonelyness);
+                        count--;
+                    case 4:
+                        choices.add(choice);
+                        txt.setText(R.string.Sensitivity);
+                        count--;
+                    case 5:
+                        choices.add(choice);
+                        txt.setText(R.string.Intensity);
+                        count--;
+                    case 6:
+                        choices.add(choice);
+                        txt.setText(R.string.good);
+                        count--;
+                    case 7:
+                        choices.add(choice);
+                        txt.setText(R.string.Exercise);
+                        count--;
+                }
             }
         });
-        txt.setText(R.string.adapt);
+        txt.setText(R.string.Energy);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
                             for (DataSnapshot dogAttributes : dog.getChildren()) {
                                 String attribute = dogAttributes.getKey();
                                 String attributeValue = (String) dogAttributes.getValue();
-                                Log.d(attribute + " " + dogName, String.valueOf(attributeValue));
+                                
                             }
                         }
                     }
