@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                             String dogName = dog.getKey();
                             for (DataSnapshot dogAttributes : dog.getChildren()) {
                                 String attribute = dogAttributes.getKey();
-                                int attributeValue = (int) dogAttributes.getValue();
+                                String attributeValue = (String) dogAttributes.getValue();
                                 Log.d(attribute + " " + dogName, String.valueOf(attributeValue));
                             }
                         }
