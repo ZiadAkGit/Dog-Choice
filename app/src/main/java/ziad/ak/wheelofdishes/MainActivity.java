@@ -285,16 +285,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (count <= 0) {
                     String tempDogName;
-
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             //For each dog in the list
                             for (DataSnapshot dog : snapshot.getChildren()) {
                                 String dogName = dog.getKey();
-                                //For each attribute for the dog ^ in the dog list
-                                for (DataSnapshot dogAttributes : dog.getChildren()) {
-                                    String attributeValue = (String) dogAttributes.getValue();
+                                //put all values in a list to compare
+                                List<String> list = new ArrayList<>();
+                                for (DataSnapshot dog2:dog.getChildren()) {
+                                    list.add((String) dog2.getValue());
+                                }
+                                //all user choices.
+                                String energy = String.valueOf(choices.get(0));
+                                String ex = String.valueOf(choices.get(1));
+                                String good = String.valueOf(choices.get(2));
+                                String sen = String.valueOf(choices.get(3));
+                                String alone = String.valueOf(choices.get(4));
+                                String cold = String.valueOf(choices.get(5));
+                                String hot = String.valueOf(choices.get(6));
+                                String adapt = String.valueOf(choices.get(7));
+                                if(energy.equalsIgnoreCase(list.get(0)) && ex.equalsIgnoreCase(list.get(1)) && good.equalsIgnoreCase(list.get(2))
+                                        && sen.equalsIgnoreCase(list.get(3)) && alone.equalsIgnoreCase(list.get(4)) && cold.equalsIgnoreCase(list.get(5))
+                                        && hot.equalsIgnoreCase(list.get(6)) && adapt.equalsIgnoreCase(list.get(7))){
+                                    Toast.makeText(MainActivity.this, "You Are a " + dogName + " DOG!", Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
