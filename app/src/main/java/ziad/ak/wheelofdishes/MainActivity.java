@@ -284,6 +284,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (count <= 0) {
+                    String tempDogName;
+
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -292,9 +294,7 @@ public class MainActivity extends AppCompatActivity {
                                 String dogName = dog.getKey();
                                 //For each attribute for the dog ^ in the dog list
                                 for (DataSnapshot dogAttributes : dog.getChildren()) {
-                                    String attribute = dogAttributes.getKey();
                                     String attributeValue = (String) dogAttributes.getValue();
-
                                 }
                             }
                         }
