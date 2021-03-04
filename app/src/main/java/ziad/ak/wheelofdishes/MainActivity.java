@@ -74,7 +74,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dog : snapshot.getChildren()) {
-
+                            String dogName = dog.getKey();
+                            for (DataSnapshot dogAttributes : dog.getChildren()) {
+                                String attribute = dogAttributes.getKey();
+                                int attributeValue = Integer.parseInt(String.valueOf(dogAttributes.getValue()));
+                                if(attributeValue == choice) {
+                                    Toast.makeText(MainActivity.this, "You Made it BITCH You are a " + dogName, Toast.LENGTH_SHORT).show();
+                                    Log.d("CHOICEE " , attribute);
+                                    break;
+                                }
+                            }
                         }
                     }
                     @Override
