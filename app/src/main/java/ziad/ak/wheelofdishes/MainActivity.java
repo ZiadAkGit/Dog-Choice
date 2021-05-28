@@ -407,6 +407,7 @@ public class MainActivity extends AppCompatActivity {
                 txt.setText(tempDogName);
                 count = 9;
                 choices.clear();
+
             }
         });
     }
