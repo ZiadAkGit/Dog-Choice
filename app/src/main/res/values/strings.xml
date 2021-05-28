@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Which Dog Are You</string>
+    <string name="app_name">DogChoice</string>
     <string name="clicktest">ClickTest</string>
     <string name="adapt">Adapts Well To Apartment Living</string>
     <string name="good">Good For Novice Owners</string>
