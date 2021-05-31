@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DogChoice</string>
-    <string name="clicktest">ClickTest</string>
+    <string name="clicktest">Results</string>
     <string name="adapt">Adapts Well To Apartment Living</string>
     <string name="good">Good Owner?</string>
     <string name="Sensitivity">Are You Sensitive</string>
