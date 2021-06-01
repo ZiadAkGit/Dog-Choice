@@ -23,14 +23,14 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
         android:text="How energetic are you?"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FF0000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.644" />
+        app:layout_constraintVertical_bias="0.189" />
 
     <SeekBar
         android:id="@+id/seekBar1"

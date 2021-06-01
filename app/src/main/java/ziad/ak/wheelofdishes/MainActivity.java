@@ -1,9 +1,11 @@
 package ziad.ak.wheelofdishes;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,9 +21,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.OptionalDouble;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     List<String> dogSSS = new ArrayList<>();
     List<String> dogsToAdopt = new ArrayList<>();
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                choice = seekBar.getProgress();
+                choice = seekBar.getProgress() + 1;
                 switch (count){
                     case 0:
                         choices.add(choice);
@@ -128,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                     dogS.put(dog.getKey(), dogSS);
                     dogSSS.add(dog.getKey());
                 }
+                Log.d("All dogs are: ",String.valueOf(dogS.size()));
             }
 
             @Override
@@ -137,43 +143,52 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn1.setOnClickListener(view -> {
+            int[] User_choices = {choices.get(0),choices.get(1),choices.get(2),choices.get(3),choices.get(4),choices.get(5),choices.get(6),choices.get(7),choices.get(8),choices.get(9)};
+            /**
             int energy = choices.get(0); int ex = choices.get(1); int good = choices.get(2); int intes = choices.get(3); int sen = choices.get(4);
             int alone = choices.get(5); int cold = choices.get(6); int hot = choices.get(7); int adapt = choices.get(8); int playfulness = choices.get(9);
-
-            for (int counter = 0; counter < dogS.size(); counter++){
+            **/
+            for (int counter = 0; counter < dogS.size(); counter++) {
                 //Getting all Dog Alt
-                int adaptDogs = Integer.parseInt(dogSS.get(counter)[1]); int goodDogs = Integer.parseInt(dogSS.get(counter)[3]);
-                int senDogs = Integer.parseInt(dogSS.get(counter)[5]); int aloneDogs = Integer.parseInt(dogSS.get(counter)[7]);
-                int coldDogs = Integer.parseInt(dogSS.get(counter)[9]); int hotDogs = Integer.parseInt(dogSS.get(counter)[11]);
-                int energyDogs = Integer.parseInt(dogSS.get(counter)[13]); int intesDogs = Integer.parseInt(dogSS.get(counter)[15]);
-                int exDogs = Integer.parseInt(dogSS.get(counter)[17]); int playfulnessDogs = Integer.parseInt(dogSS.get(counter)[19]);
+                int[] Dog_choices = {Integer.parseInt(dogSS.get(counter)[1]), Integer.parseInt(dogSS.get(counter)[3]), Integer.parseInt(dogSS.get(counter)[5]),
+                        Integer.parseInt(dogSS.get(counter)[7]), Integer.parseInt(dogSS.get(counter)[9]), Integer.parseInt(dogSS.get(counter)[11]), Integer.parseInt(dogSS.get(counter)[13]),
+                        Integer.parseInt(dogSS.get(counter)[15]), Integer.parseInt(dogSS.get(counter)[17]), Integer.parseInt(dogSS.get(counter)[19])};
+                /**
+                 int adaptDogs = Integer.parseInt(dogSS.get(counter)[1]); int goodDogs = Integer.parseInt(dogSS.get(counter)[3]);
+                 int senDogs = Integer.parseInt(dogSS.get(counter)[5]); int aloneDogs = Integer.parseInt(dogSS.get(counter)[7]);
+                 int coldDogs = Integer.parseInt(dogSS.get(counter)[9]); int hotDogs = Integer.parseInt(dogSS.get(counter)[11]);
+                 int energyDogs = Integer.parseInt(dogSS.get(counter)[13]); int intesDogs = Integer.parseInt(dogSS.get(counter)[15]);
+                 int exDogs = Integer.parseInt(dogSS.get(counter)[17]); int playfulnessDogs = Integer.parseInt(dogSS.get(counter)[19]);
+                 **/
+
                 //Checking who is the best match
-                if(((energy == energyDogs) && (ex == exDogs) && (good == goodDogs) && (intes == intesDogs) &&
-                        (sen == senDogs) && (alone == aloneDogs) && (cold == coldDogs) && (hot == hotDogs) &&
-                        (adapt == adaptDogs) && (playfulness == playfulnessDogs)) ||
-                        ((energy == energyDogs) && (ex == exDogs) && (good == goodDogs) && (intes == intesDogs) &&
-                                (sen == senDogs) && (alone == aloneDogs) && (cold == coldDogs) && (hot == hotDogs) &&
-                                (adapt + 1 == adaptDogs) && (playfulness + 1 == playfulnessDogs)) ||
-                        ((energy + 1 == energyDogs) && (ex == exDogs) && (good + 1== goodDogs) && (intes == intesDogs) &&
-                                (sen == senDogs) && (alone == aloneDogs) && (cold == coldDogs) && (hot == hotDogs) &&
-                                (adapt == adaptDogs) && (playfulness == playfulnessDogs))   ){
+                if (Arrays.stream(User_choices).average().getAsDouble() <= Arrays.stream(Dog_choices).average().getAsDouble()) {
                     dogsToAdopt.add(dogSSS.get(counter));
+                    Log.d("ARRAY1", String.valueOf(Arrays.stream(User_choices).average().getAsDouble()));
+                    Log.d("ARRAY2", String.valueOf(Arrays.stream(Dog_choices).average().getAsDouble()));
                 }
             }
-            //Log.d("DogLIST: " , "There are: " + dogsToAdopt.size() +" dogs that match");
-            Random r = new Random();
-            int tempcheck = 0;
-            for (int z = 0; z < 5; z++) {
-                int randomchoice = r.nextInt(dogsToAdopt.size());
-                if (tempcheck != randomchoice) {
-                    String dogName = dogsToAdopt.get(randomchoice);
-                    tempDogName += dogName + "\n";
+
+            Log.d("SIZEOFMMAP!!!$12" , String.valueOf(dogsToAdopt.size()));
+
+            if(dogsToAdopt.size() == 0)
+                Toast.makeText(this, "Something got Missed up there!!!", Toast.LENGTH_LONG).show();
+            else {
+                    Random r = new Random();
+                    int temp_check = 0;
+                    for (int z = 0; z < 5; z++) {
+                        int random_choice = r.nextInt(dogsToAdopt.size());
+                        Log.d("Choice_Number_" + z+1, String.valueOf(random_choice));
+                        if (temp_check != random_choice) {
+                            String dogName = dogsToAdopt.get(random_choice);
+                            tempDogName += dogName + "\n";
+                        }
+                        temp_check = random_choice;
+                    }
+                    txt.setText(tempDogName);
+                    count = 9;
+                    choices.clear();
                 }
-                tempcheck = randomchoice;
-            }
-            txt.setText(tempDogName);
-            count = 9;
-            choices.clear();
-        });
+            });
     }
 }
