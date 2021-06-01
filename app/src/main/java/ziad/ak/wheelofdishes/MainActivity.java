@@ -136,51 +136,44 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int energy = choices.get(0);
-                int ex = choices.get(1);
-                int good = choices.get(2);
-                int intes = choices.get(3);
-                int sen = choices.get(4);
-                int alone = choices.get(5);
-                int cold = choices.get(6);
-                int hot = choices.get(7);
-                int adapt = choices.get(8);
-                int playfulness = choices.get(9);
-                for (int counter = 0; counter < dogS.size(); counter++){
-                    //Getting all Dog Alt
-                    int adaptDogs = Integer.parseInt(dogSS.get(counter)[1]);
-                    int goodDogs = Integer.parseInt(dogSS.get(counter)[3]);
-                    int senDogs = Integer.parseInt(dogSS.get(counter)[5]);
-                    int aloneDogs = Integer.parseInt(dogSS.get(counter)[7]);
-                    int coldDogs = Integer.parseInt(dogSS.get(counter)[9]);
-                    int hotDogs = Integer.parseInt(dogSS.get(counter)[11]);
-                    int energyDogs = Integer.parseInt(dogSS.get(counter)[13]);
-                    int intesDogs = Integer.parseInt(dogSS.get(counter)[15]);
-                    int exDogs = Integer.parseInt(dogSS.get(counter)[17]);
-                    int playfulnessDogs = Integer.parseInt(dogSS.get(counter)[19]);
-                    //Checking who is the best match
-                    if(((energy == energyDogs) && (ex == exDogs) && (good == goodDogs) && (intes == intesDogs) &&
-                            (sen == senDogs) && (alone == aloneDogs) && (cold == coldDogs) && (hot == hotDogs) &&
-                            (adapt == adaptDogs) && (playfulness == playfulnessDogs)) ||
-                            ((adaptDogs+1) == adapt) || (aloneDogs+1) == alone){
-                        dogsToAdopt.add(dogSSS.get(counter));
-                    }
+        btn1.setOnClickListener(view -> {
+            int energy = choices.get(0); int ex = choices.get(1); int good = choices.get(2); int intes = choices.get(3); int sen = choices.get(4);
+            int alone = choices.get(5); int cold = choices.get(6); int hot = choices.get(7); int adapt = choices.get(8); int playfulness = choices.get(9);
+
+            for (int counter = 0; counter < dogS.size(); counter++){
+                //Getting all Dog Alt
+                int adaptDogs = Integer.parseInt(dogSS.get(counter)[1]); int goodDogs = Integer.parseInt(dogSS.get(counter)[3]);
+                int senDogs = Integer.parseInt(dogSS.get(counter)[5]); int aloneDogs = Integer.parseInt(dogSS.get(counter)[7]);
+                int coldDogs = Integer.parseInt(dogSS.get(counter)[9]); int hotDogs = Integer.parseInt(dogSS.get(counter)[11]);
+                int energyDogs = Integer.parseInt(dogSS.get(counter)[13]); int intesDogs = Integer.parseInt(dogSS.get(counter)[15]);
+                int exDogs = Integer.parseInt(dogSS.get(counter)[17]); int playfulnessDogs = Integer.parseInt(dogSS.get(counter)[19]);
+                //Checking who is the best match
+                if(((energy == energyDogs) && (ex == exDogs) && (good == goodDogs) && (intes == intesDogs) &&
+                        (sen == senDogs) && (alone == aloneDogs) && (cold == coldDogs) && (hot == hotDogs) &&
+                        (adapt == adaptDogs) && (playfulness == playfulnessDogs)) ||
+                        ((energy == energyDogs) && (ex == exDogs) && (good == goodDogs) && (intes == intesDogs) &&
+                                (sen == senDogs) && (alone == aloneDogs) && (cold == coldDogs) && (hot == hotDogs) &&
+                                (adapt + 1 == adaptDogs) && (playfulness + 1 == playfulnessDogs)) ||
+                        ((energy + 1 == energyDogs) && (ex == exDogs) && (good + 1== goodDogs) && (intes == intesDogs) &&
+                                (sen == senDogs) && (alone == aloneDogs) && (cold == coldDogs) && (hot == hotDogs) &&
+                                (adapt == adaptDogs) && (playfulness == playfulnessDogs))   ){
+                    dogsToAdopt.add(dogSSS.get(counter));
                 }
-
-                Log.d("DogLIST: " , "There are: " + dogsToAdopt.size() +" dogs that match");
-
-                Random r = new Random();
-                for (int z = 0; z < 5; z++) {
-                    String dogName = dogsToAdopt.get(r.nextInt(dogsToAdopt.size()));
+            }
+            //Log.d("DogLIST: " , "There are: " + dogsToAdopt.size() +" dogs that match");
+            Random r = new Random();
+            int tempcheck = 0;
+            for (int z = 0; z < 5; z++) {
+                int randomchoice = r.nextInt(dogsToAdopt.size());
+                if (tempcheck != randomchoice) {
+                    String dogName = dogsToAdopt.get(randomchoice);
                     tempDogName += dogName + "\n";
                 }
-                txt.setText(tempDogName);
-                count = 9;
-                choices.clear();
+                tempcheck = randomchoice;
             }
+            txt.setText(tempDogName);
+            count = 9;
+            choices.clear();
         });
     }
 }
