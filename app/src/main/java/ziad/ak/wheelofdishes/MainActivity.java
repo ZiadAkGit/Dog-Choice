@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 choice = seekBar.getProgress() + 1;
-                switch (count){
+                switch (count) {
                     case 0:
                         choices.add(choice);
                         txt.setText("All Good Click on the button in the bottom of the page");
@@ -141,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn1.setOnClickListener(view -> {
-            int[] User_choices = {choices.get(0),choices.get(1),choices.get(2),choices.get(3),choices.get(4),
-                    choices.get(5),choices.get(6),choices.get(7),choices.get(8),choices.get(9)};
+            int[] User_choices = {choices.get(0), choices.get(1), choices.get(2), choices.get(3), choices.get(4),
+                    choices.get(5), choices.get(6), choices.get(7), choices.get(8), choices.get(9)};
 
             for (int counter = 0; counter < dogS.size(); counter++) {
                 //Getting all Dog Alt
@@ -151,28 +151,28 @@ public class MainActivity extends AppCompatActivity {
                         Integer.parseInt(dogSS.get(counter)[11]), Integer.parseInt(dogSS.get(counter)[1]), Integer.parseInt(dogSS.get(counter)[19])};
 
                 int k = 0;
-                    if ((Dog_choices[k] == User_choices[k] || (Dog_choices[k] + 1 == User_choices[k])
-                            || (Dog_choices[k] - 1 == User_choices[k]))){
-                        if((Dog_choices[k + 1] == User_choices[k + 1] || (Dog_choices[k + 1] + 1 == User_choices[k + 1])
-                                || (Dog_choices[k + 1] - 1 == User_choices[k + 1]))){
-                            if((Dog_choices[k + 2] == User_choices[k + 2] || (Dog_choices[k + 2] + 1 == User_choices[k + 2])
-                                    || (Dog_choices[k + 2] - 1 == User_choices[k + 2]))){
-                                if((Dog_choices[k + 3] == User_choices[k + 3] || (Dog_choices[k + 3] + 1 == User_choices[k + 3])
-                                        || (Dog_choices[k + 3] - 1 == User_choices[k + 3]))){
-                                    if((Dog_choices[k + 4] == User_choices[k + 4] || (Dog_choices[k + 4] + 1 == User_choices[k + 4])
-                                            || (Dog_choices[k + 4] - 1 == User_choices[k + 4]))){
-                                        if((Dog_choices[k + 5] == User_choices[k + 5] || (Dog_choices[k + 5] + 1 == User_choices[k + 5])
-                                                || (Dog_choices[k + 5] - 1 == User_choices[k + 5]))){
-                                            if((Dog_choices[k + 6] == User_choices[k + 6] || (Dog_choices[k + 6] + 1 == User_choices[k + 6])
-                                                    || (Dog_choices[k + 6] - 1 == User_choices[k + 6]))){
-                                                if((Dog_choices[k + 7] == User_choices[k + 7] || (Dog_choices[k + 7] + 1 == User_choices[k + 7])
-                                                        || (Dog_choices[k + 7] - 1 == User_choices[k + 7]))){
-                                                    if((Dog_choices[k + 8] == User_choices[k + 8] || (Dog_choices[k + 8] + 1 == User_choices[k + 8])
-                                                            || (Dog_choices[k + 8] - 1 == User_choices[k + 8]))){
-                                                        if((Dog_choices[k + 9] == User_choices[k + 9] || (Dog_choices[k + 9] + 1 == User_choices[k + 9])
-                                                                || (Dog_choices[k + 9] - 1 == User_choices[k + 9]))){
-                                                            dogsToAdopt.add(dogSSS.get(counter));
-                                                        }
+                //Check which are the best dogs for the choices.
+                if ((Dog_choices[k] == User_choices[k] || (Dog_choices[k] + 1 == User_choices[k])
+                        || (Dog_choices[k] - 1 == User_choices[k]))) {
+                    if ((Dog_choices[k + 1] == User_choices[k + 1] || (Dog_choices[k + 1] + 1 == User_choices[k + 1])
+                            || (Dog_choices[k + 1] - 1 == User_choices[k + 1]))) {
+                        if ((Dog_choices[k + 2] == User_choices[k + 2] || (Dog_choices[k + 2] + 1 == User_choices[k + 2])
+                                || (Dog_choices[k + 2] - 1 == User_choices[k + 2]))) {
+                            if ((Dog_choices[k + 3] == User_choices[k + 3] || (Dog_choices[k + 3] + 1 == User_choices[k + 3])
+                                    || (Dog_choices[k + 3] - 1 == User_choices[k + 3]))) {
+                                if ((Dog_choices[k + 4] == User_choices[k + 4] || (Dog_choices[k + 4] + 1 == User_choices[k + 4])
+                                        || (Dog_choices[k + 4] - 1 == User_choices[k + 4]))) {
+                                    if ((Dog_choices[k + 5] == User_choices[k + 5] || (Dog_choices[k + 5] + 1 == User_choices[k + 5])
+                                            || (Dog_choices[k + 5] - 1 == User_choices[k + 5]))) {
+                                        if ((Dog_choices[k + 6] == User_choices[k + 6] || (Dog_choices[k + 6] + 1 == User_choices[k + 6])
+                                                || (Dog_choices[k + 6] - 1 == User_choices[k + 6]))) {
+                                            if ((Dog_choices[k + 7] == User_choices[k + 7] || (Dog_choices[k + 7] + 1 == User_choices[k + 7])
+                                                    || (Dog_choices[k + 7] - 1 == User_choices[k + 7]))) {
+                                                if ((Dog_choices[k + 8] == User_choices[k + 8] || (Dog_choices[k + 8] + 1 == User_choices[k + 8])
+                                                        || (Dog_choices[k + 8] - 1 == User_choices[k + 8]))) {
+                                                    if ((Dog_choices[k + 9] == User_choices[k + 9] || (Dog_choices[k + 9] + 1 == User_choices[k + 9])
+                                                            || (Dog_choices[k + 9] - 1 == User_choices[k + 9]))) {
+                                                        dogsToAdopt.add(dogSSS.get(counter));
                                                     }
                                                 }
                                             }
@@ -182,29 +182,33 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }
+                }
             }
 
-            Log.d("Dogs_Been_Chosen:" , String.valueOf(dogsToAdopt.size()));
+            Log.d("Dogs_Been_Chosen:", String.valueOf(dogsToAdopt.size()));
+            for (String dog : dogsToAdopt) {
+                Log.d("Dog_IS: ", dog);
+            }
 
-            if(dogsToAdopt.size() == 0)
-                Toast.makeText(this, "Something got Missed up there!!!", Toast.LENGTH_LONG).show();
+            if (dogsToAdopt.size() == 0)
+                Log.d("Error: ", "Size = 0, No dogs were found");
             else {
-                    Random r = new Random();
+                Random r = new Random();
                 int temp_check = 0;
-                    for (int z = 0; z < 5; z++) {
-                        int random_choice = r.nextInt(dogsToAdopt.size());
-                        if (temp_check != random_choice) {
-                            String dogName = dogsToAdopt.get(random_choice);
-                            tempDogName += dogName + "\n";
-                        }else{
-                            z--;
-                        }
-                        temp_check = random_choice;
+                for (int z = 0; z < 5; z++) {
+                    int random_choice = r.nextInt(dogsToAdopt.size());
+                    if (temp_check != random_choice) {
+                        String dogName = dogsToAdopt.get(random_choice);
+                        tempDogName += dogName + "\n";
+                    } else {
+                        z--;
                     }
-                    txt.setText(tempDogName);
-                    count = 9;
-                    choices.clear();
+                    temp_check = random_choice;
                 }
-            });
+                txt.setText(tempDogName);
+                count = 9;
+                choices.clear();
+            }
+        });
     }
 }
