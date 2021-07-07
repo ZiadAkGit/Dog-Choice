@@ -153,43 +153,27 @@ public class MainActivity extends AppCompatActivity {
                 int k = 0;
                 //Check which are the best dogs for the choices.
                 if ((Dog_choices[k] == User_choices[k] || (Dog_choices[k] + 1 == User_choices[k])
-                        || (Dog_choices[k] - 1 == User_choices[k]))) {
+                        || (Dog_choices[k] - 1 == User_choices[k])))
                     if ((Dog_choices[k + 1] == User_choices[k + 1] || (Dog_choices[k + 1] + 1 == User_choices[k + 1])
-                            || (Dog_choices[k + 1] - 1 == User_choices[k + 1]))) {
+                            || (Dog_choices[k + 1] - 1 == User_choices[k + 1])))
                         if ((Dog_choices[k + 2] == User_choices[k + 2] || (Dog_choices[k + 2] + 1 == User_choices[k + 2])
-                                || (Dog_choices[k + 2] - 1 == User_choices[k + 2]))) {
+                                || (Dog_choices[k + 2] - 1 == User_choices[k + 2])))
                             if ((Dog_choices[k + 3] == User_choices[k + 3] || (Dog_choices[k + 3] + 1 == User_choices[k + 3])
-                                    || (Dog_choices[k + 3] - 1 == User_choices[k + 3]))) {
+                                    || (Dog_choices[k + 3] - 1 == User_choices[k + 3])))
                                 if ((Dog_choices[k + 4] == User_choices[k + 4] || (Dog_choices[k + 4] + 1 == User_choices[k + 4])
-                                        || (Dog_choices[k + 4] - 1 == User_choices[k + 4]))) {
+                                        || (Dog_choices[k + 4] - 1 == User_choices[k + 4])))
                                     if ((Dog_choices[k + 5] == User_choices[k + 5] || (Dog_choices[k + 5] + 1 == User_choices[k + 5])
-                                            || (Dog_choices[k + 5] - 1 == User_choices[k + 5]))) {
+                                            || (Dog_choices[k + 5] - 1 == User_choices[k + 5])))
                                         if ((Dog_choices[k + 6] == User_choices[k + 6] || (Dog_choices[k + 6] + 1 == User_choices[k + 6])
-                                                || (Dog_choices[k + 6] - 1 == User_choices[k + 6]))) {
+                                                || (Dog_choices[k + 6] - 1 == User_choices[k + 6])))
                                             if ((Dog_choices[k + 7] == User_choices[k + 7] || (Dog_choices[k + 7] + 1 == User_choices[k + 7])
-                                                    || (Dog_choices[k + 7] - 1 == User_choices[k + 7]))) {
+                                                    || (Dog_choices[k + 7] - 1 == User_choices[k + 7])))
                                                 if ((Dog_choices[k + 8] == User_choices[k + 8] || (Dog_choices[k + 8] + 1 == User_choices[k + 8])
-                                                        || (Dog_choices[k + 8] - 1 == User_choices[k + 8]))) {
+                                                        || (Dog_choices[k + 8] - 1 == User_choices[k + 8])))
                                                     if ((Dog_choices[k + 9] == User_choices[k + 9] || (Dog_choices[k + 9] + 1 == User_choices[k + 9])
-                                                            || (Dog_choices[k + 9] - 1 == User_choices[k + 9]))) {
+                                                            || (Dog_choices[k + 9] - 1 == User_choices[k + 9])))
                                                         dogsToAdopt.add(dogSSS.get(counter));
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
-
-            Log.d("Dogs_Been_Chosen:", String.valueOf(dogsToAdopt.size()));
-            for (String dog : dogsToAdopt) {
-                Log.d("Dog_IS: ", dog);
-            }
-
             if (dogsToAdopt.size() == 0)
                 Log.d("Error: ", "Size = 0, No dogs were found");
             else {
