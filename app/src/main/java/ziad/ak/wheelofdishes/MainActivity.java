@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
                         txt.setText(R.string.good);
                         count--;
                         break;
-
                     case 9:
                         choices.add(choice);
                         txt.setText(R.string.Exercise);
@@ -125,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dog : snapshot.getChildren()) {
-                    //split the attributes to Text = Number
+                    //split the attributes to Text <-> Number
                     String[] dogVal = Objects.requireNonNull(dog.getValue()).toString().split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
                     //adding all dogs to hashmap with list of string array as a value
                     dogSS.add(dogVal);
@@ -174,8 +173,10 @@ public class MainActivity extends AppCompatActivity {
                                                             || (Dog_choices[k + 9] - 1 == User_choices[k + 9])))
                                                         dogsToAdopt.add(dogSSS.get(counter));
             }
-            if (dogsToAdopt.size() == 0)
+            if (dogsToAdopt.size() == 0){
                 Log.d("Error: ", "Size = 0, No dogs were found");
+                Toast.makeText(this, "Did you fill everything correctly ?", Toast.LENGTH_SHORT).show();
+            }
             else {
                 Random r = new Random();
                 int temp_check = 0;
