@@ -1,14 +1,15 @@
 <resources>
     <string name="app_name">DogChoice</string>
     <string name="clicktest">Results!</string>
-    <string name="adapt">Adapts Well To Apartment Living?</string>
-    <string name="good">Good for Novice Owner?</string>
-    <string name="Sensitivity">How Much Sensitive Dog?</string>
-    <string name="lonelyness">Tolerates Being Alone?</string>
-    <string name="Cold">Tolerates Cold Weather?</string>
-    <string name="Hot">Tolerates Hot Weather?</string>
-    <string name="Energy">How Energetic is the Dog?</string>
-    <string name="Intensity">How Intense is the Dog?</string>
-    <string name="Exercise">Exercise Needs?</string>
-    <string name="Playfulness">Playfulness?</string>
+    <string name="clicktest2">Reset!</string>
+    <string name="adapt">How well does the dog adapts to your apartment?</string>
+    <string name="good">How new are you to dogs?</string>
+    <string name="Sensitivity">How sensitive the dog can be?</string>
+    <string name="lonelyness">How much does the dog tolerates being alone?</string>
+    <string name="Cold">How much does the dog tolerates cold weather?</string>
+    <string name="Hot">How much does the dog tolerates hot weather?</string>
+    <string name="Energy">How energetic is the Dog?</string>
+    <string name="Intensity">How intense is the Dog?</string>
+    <string name="Exercise">How much exercise is needed for the dog?</string>
+    <string name="Playfulness">How playful does the dog?</string>
 </resources>

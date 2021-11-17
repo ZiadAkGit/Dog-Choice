@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     List<String> dogSSS = new ArrayList<>();
     List<String> dogsToAdopt = new ArrayList<>();
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
                         choices.add(choice);
                         txt.setText(R.string.Playfulness);
                         count--;
-                        seekBar.setTransitionName("1-4");
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            seekBar.setTransitionName("1-4");
+                        }
                         break;
                     case 2:
                         choices.add(choice);
@@ -190,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
             else {
                 Random r = new Random();
                 List<Integer> temp_check = new ArrayList<>();
+                Log.d("Dog_Size","Dogs size is: " + dogsToAdopt.size());
+                tempDogName = "The top 5 dogs for you are:\n";
                 if (dogsToAdopt.size() <= 5) {
                     for (int x = 0; x < dogsToAdopt.size(); x++) {
                         String dogName = dogsToAdopt.get(x);
@@ -202,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                         if(temp_check.contains(random_choice) && !(temp_check.get(0) == random_choice))
                             random_choice = r.nextInt(dogsToAdopt.size());
                         String dogName = dogsToAdopt.get(random_choice);
+                        Log.d("Choice: ", "Random choices aer: " + random_choice);
                         tempDogName += dogName + "\n";
                     }
                 }

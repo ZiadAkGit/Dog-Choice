@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#E1AEAE"
     tools:context=".MainActivity">
 
     <Button
@@ -15,49 +15,53 @@
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.811"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar1"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.586" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="How energetic are you?"
+        android:gravity="center"
+        android:text="@string/Energy"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FF0000"
+        android:textColor="#DF0073A8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintVertical_bias="0.261" />
 
     <SeekBar
         android:id="@+id/seekBar1"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="379dp"
         android:layout_height="85dp"
-        android:progressBackgroundTint="#140396"
-        android:progressTint="#FF0000"
         android:layout_marginBottom="308dp"
         android:max="4"
         android:progress="0"
+        android:progressBackgroundTint="#03A7FF"
+        android:progressTint="#04688F"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.645" />
+        app:layout_constraintVertical_bias="0.914"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset!"
+        android:text="@string/clicktest2"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.229"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar1"
+        app:layout_constraintVertical_bias="0.586" />
 </androidx.constraintlayout.widget.ConstraintLayout>
