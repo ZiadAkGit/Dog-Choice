@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     int choice = 0;
-    TextView txt;
+    TextView txt,txtX,txtY;
     int count = 9;
     String tempDogName = "";
     List<Integer> choices = new ArrayList<>();
@@ -48,10 +48,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txt = findViewById(R.id.textView2);
+        txtX = findViewById(R.id.txtviewX);
+        txtY = findViewById(R.id.txtviewY);
         Button btn1 = findViewById(R.id.button);
         Button btn2 = findViewById(R.id.button2);
         SeekBar seekBar = findViewById(R.id.seekBar1);
         txt.setText(R.string.Energy);
+        txtX.setText("Loves it's bed");
+        txtY.setText("Very energetic");
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -71,12 +75,17 @@ public class MainActivity extends AppCompatActivity {
                 switch (count) {
                     case 0:
                         choices.add(choice);
-                        txt.setText("All Good Click on the button in the bottom of the page");
+                        txt.setText("Click Results button to know your Dogs of choice");
+                        seekBar.setVisibility(View.INVISIBLE);
+                        txtX.setVisibility(View.INVISIBLE);
+                        txtY.setVisibility(View.INVISIBLE);
                         count--;
                         break;
                     case 1:
                         choices.add(choice);
                         txt.setText(R.string.Playfulness);
+                        txtX.setText("Not Playful at all");
+                        txtY.setText("Very Playful");
                         count--;
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             seekBar.setTransitionName("1-4");
@@ -85,41 +94,57 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         choices.add(choice);
                         txt.setText(R.string.adapt);
+                        txtX.setText("Doesn't adapt at all");
+                        txtY.setText("Adapts very well");
                         count--;
                         break;
                     case 3:
                         choices.add(choice);
                         txt.setText(R.string.Hot);
+                        txtX.setText("Doesn't tolerate at all");
+                        txtY.setText("Love hot weather");
                         count--;
                         break;
                     case 4:
                         choices.add(choice);
                         txt.setText(R.string.Cold);
+                        txtX.setText("Doesn't tolerate at all");
+                        txtY.setText("Love cold weather");
                         count--;
                         break;
                     case 5:
                         choices.add(choice);
                         txt.setText(R.string.lonelyness);
+                        txtX.setText("Hate to be lonely");
+                        txtY.setText("Love being lonely");
                         count--;
                         break;
                     case 6:
                         choices.add(choice);
                         txt.setText(R.string.Sensitivity);
+                        txtX.setText("Cold hearted");
+                        txtY.setText("Drama queen");
                         count--;
                         break;
                     case 7:
                         choices.add(choice);
                         txt.setText(R.string.Intensity);
+                        txtX.setText("Not intense at all");
+                        txtY.setText("Very intense");
                         count--;
                         break;
                     case 8:
                         choices.add(choice);
                         txt.setText(R.string.good);
+                        txtX.setText("Not new at all");
+                        txtY.setText("Just started");
                         count--;
                         break;
                     case 9:
                         choices.add(choice);
                         txt.setText(R.string.Exercise);
+                        txtX.setText("I love my Snorlax");
+                        txtY.setText("BEAST MODE ON");
                         count--;
                         break;
                 }
@@ -192,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
                 Random r = new Random();
                 List<Integer> temp_check = new ArrayList<>();
                 Log.d("Dog_Size","Dogs size is: " + dogsToAdopt.size());
-                tempDogName = "The top 5 dogs for you are:\n";
+                tempDogName = "The top dogs for you are:\n\n";
                 if (dogsToAdopt.size() <= 5) {
                     for (int x = 0; x < dogsToAdopt.size(); x++) {
                         String dogName = dogsToAdopt.get(x);
