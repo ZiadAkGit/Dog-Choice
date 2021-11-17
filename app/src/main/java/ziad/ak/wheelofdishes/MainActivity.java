@@ -3,11 +3,14 @@ package ziad.ak.wheelofdishes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.IntentCompat;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -20,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         txt = findViewById(R.id.textView2);
         Button btn1 = findViewById(R.id.button);
+        Button btn2 = findViewById(R.id.button2);
         SeekBar seekBar = findViewById(R.id.seekBar1);
-
         txt.setText(R.string.Energy);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                         choices.add(choice);
                         txt.setText(R.string.Playfulness);
                         count--;
+                        seekBar.setTransitionName("1-4");
                         break;
                     case 2:
                         choices.add(choice);
@@ -140,6 +145,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn1.setOnClickListener(view -> {
+            if(choices.size() < 9){
+                Toast.makeText(this, "Did you complete the quiz?", Toast.LENGTH_SHORT).show();
+                return;
+            }
             int[] User_choices = {choices.get(0), choices.get(1), choices.get(2), choices.get(3), choices.get(4),
                     choices.get(5), choices.get(6), choices.get(7), choices.get(8), choices.get(9)};
 
@@ -173,27 +182,39 @@ public class MainActivity extends AppCompatActivity {
                                                             || (Dog_choices[k + 9] - 1 == User_choices[k + 9])))
                                                         dogsToAdopt.add(dogSSS.get(counter));
             }
+
             if (dogsToAdopt.size() == 0){
                 Log.d("Error: ", "Size = 0, No dogs were found");
-                Toast.makeText(this, "Did you fill everything correctly ?", Toast.LENGTH_SHORT).show();
+                txt.setText("Sorry, We Couldn't find a dog that match those descriptions");
             }
             else {
                 Random r = new Random();
-                int temp_check = 0;
-                for (int z = 0; z < 5; z++) {
-                    int random_choice = r.nextInt(dogsToAdopt.size());
-                    if (temp_check != random_choice) {
+                List<Integer> temp_check = new ArrayList<>();
+                if (dogsToAdopt.size() <= 5) {
+                    for (int x = 0; x < dogsToAdopt.size(); x++) {
+                        String dogName = dogsToAdopt.get(x);
+                        tempDogName += dogName + "\n";
+                    }
+                } else {
+                    for (int z = 0; z < 5; z++) {
+                        int random_choice = r.nextInt(dogsToAdopt.size());
+                        temp_check.add(random_choice);
+                        if(temp_check.contains(random_choice) && !(temp_check.get(0) == random_choice))
+                            random_choice = r.nextInt(dogsToAdopt.size());
                         String dogName = dogsToAdopt.get(random_choice);
                         tempDogName += dogName + "\n";
-                    } else {
-                        z--;
                     }
-                    temp_check = random_choice;
                 }
                 txt.setText(tempDogName);
                 count = 9;
                 choices.clear();
             }
+        });
+
+        btn2.setOnClickListener(view -> {
+            seekBar.clearFocus();
+            seekBar.setProgress(0);
+            MainActivity.this.recreate();
         });
     }
 }
