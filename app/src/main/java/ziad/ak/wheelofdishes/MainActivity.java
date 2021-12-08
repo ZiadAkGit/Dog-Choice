@@ -3,10 +3,8 @@ package ziad.ak.wheelofdishes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.IntentCompat;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,18 +21,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     int choice = 0;
-    TextView txt,txtX,txtY;
+    TextView txt, txtX, txtY;
     int count = 9;
     String tempDogName = "";
     List<Integer> choices = new ArrayList<>();
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     List<String[]> dogSS = new ArrayList<>();
     List<String> dogSSS = new ArrayList<>();
     List<String> dogsToAdopt = new ArrayList<>();
+    List<Integer> random_Choices = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,12 +172,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn1.setOnClickListener(view -> {
-            if(choices.size() < 9){
+            random_Choices.add(-1);
+            if (choices.size() < 9) {
                 Toast.makeText(this, "Did you complete the quiz?", Toast.LENGTH_SHORT).show();
                 return;
             }
             int[] User_choices = {choices.get(0), choices.get(1), choices.get(2), choices.get(3), choices.get(4),
                     choices.get(5), choices.get(6), choices.get(7), choices.get(8), choices.get(9)};
+
+            Map<String, Integer> chances = new HashMap<>();
 
             for (int counter = 0; counter < dogS.size(); counter++) {
                 //Getting all Dog Alt
@@ -184,59 +188,107 @@ public class MainActivity extends AppCompatActivity {
                         Integer.parseInt(dogSS.get(counter)[15]), Integer.parseInt(dogSS.get(counter)[5]), Integer.parseInt(dogSS.get(counter)[7]), Integer.parseInt(dogSS.get(counter)[9]),
                         Integer.parseInt(dogSS.get(counter)[11]), Integer.parseInt(dogSS.get(counter)[1]), Integer.parseInt(dogSS.get(counter)[19])};
 
-                int k = 0;
+                //int for check and %
+                int cCheck = 0;
                 //Check which are the best dogs for the choices.
-                if ((Dog_choices[k] == User_choices[k] || (Dog_choices[k] + 1 == User_choices[k])
-                        || (Dog_choices[k] - 1 == User_choices[k])))
-                    if ((Dog_choices[k + 1] == User_choices[k + 1] || (Dog_choices[k + 1] + 1 == User_choices[k + 1])
-                            || (Dog_choices[k + 1] - 1 == User_choices[k + 1])))
-                        if ((Dog_choices[k + 2] == User_choices[k + 2] || (Dog_choices[k + 2] + 1 == User_choices[k + 2])
-                                || (Dog_choices[k + 2] - 1 == User_choices[k + 2])))
-                            if ((Dog_choices[k + 3] == User_choices[k + 3] || (Dog_choices[k + 3] + 1 == User_choices[k + 3])
-                                    || (Dog_choices[k + 3] - 1 == User_choices[k + 3])))
-                                if ((Dog_choices[k + 4] == User_choices[k + 4] || (Dog_choices[k + 4] + 1 == User_choices[k + 4])
-                                        || (Dog_choices[k + 4] - 1 == User_choices[k + 4])))
-                                    if ((Dog_choices[k + 5] == User_choices[k + 5] || (Dog_choices[k + 5] + 1 == User_choices[k + 5])
-                                            || (Dog_choices[k + 5] - 1 == User_choices[k + 5])))
-                                        if ((Dog_choices[k + 6] == User_choices[k + 6] || (Dog_choices[k + 6] + 1 == User_choices[k + 6])
-                                                || (Dog_choices[k + 6] - 1 == User_choices[k + 6])))
-                                            if ((Dog_choices[k + 7] == User_choices[k + 7] || (Dog_choices[k + 7] + 1 == User_choices[k + 7])
-                                                    || (Dog_choices[k + 7] - 1 == User_choices[k + 7])))
-                                                if ((Dog_choices[k + 8] == User_choices[k + 8] || (Dog_choices[k + 8] + 1 == User_choices[k + 8])
-                                                        || (Dog_choices[k + 8] - 1 == User_choices[k + 8])))
-                                                    if ((Dog_choices[k + 9] == User_choices[k + 9] || (Dog_choices[k + 9] + 1 == User_choices[k + 9])
-                                                            || (Dog_choices[k + 9] - 1 == User_choices[k + 9])))
-                                                        dogsToAdopt.add(dogSSS.get(counter));
+                if (Dog_choices[0] == User_choices[0])
+                    cCheck += 10;
+                else if (Dog_choices[0] + 1 == User_choices[0])
+                    cCheck += 5;
+                else if (Dog_choices[0] - 1 == User_choices[0])
+                    cCheck += 5;
+
+                if (Dog_choices[1] == User_choices[1])
+                    cCheck += 10;
+                else if (Dog_choices[1] + 1 == User_choices[1])
+                    cCheck += 5;
+                else if (Dog_choices[1] - 1 == User_choices[1])
+                    cCheck += 5;
+
+                if (Dog_choices[2] == User_choices[2])
+                    cCheck += 10;
+                else if (Dog_choices[2] + 1 == User_choices[2])
+                    cCheck += 5;
+                else if (Dog_choices[2] - 1 == User_choices[2])
+                    cCheck += 5;
+
+                if (Dog_choices[3] == User_choices[3])
+                    cCheck += 10;
+                else if (Dog_choices[3] + 1 == User_choices[3])
+                    cCheck += 5;
+                else if (Dog_choices[3] - 1 == User_choices[3])
+                    cCheck += 5;
+
+                if (Dog_choices[4] == User_choices[4])
+                    cCheck += 10;
+                else if (Dog_choices[4] + 1 == User_choices[4])
+                    cCheck += 5;
+                else if (Dog_choices[4] - 1 == User_choices[4])
+                    cCheck += 5;
+
+                if (Dog_choices[5] == User_choices[5])
+                    cCheck += 10;
+                else if (Dog_choices[5] + 1 == User_choices[5])
+                    cCheck += 5;
+                else if (Dog_choices[5] - 1 == User_choices[5])
+                    cCheck += 5;
+
+                if (Dog_choices[6] == User_choices[6])
+                    cCheck += 10;
+                else if (Dog_choices[6] + 1 == User_choices[6])
+                    cCheck += 5;
+                else if (Dog_choices[6] - 1 == User_choices[6])
+                    cCheck += 5;
+
+                if (Dog_choices[7] == User_choices[7])
+                    cCheck += 10;
+                else if (Dog_choices[7] + 1 == User_choices[7])
+                    cCheck += 5;
+                else if (Dog_choices[7] - 1 == User_choices[7])
+                    cCheck += 5;
+
+                if (Dog_choices[8] == User_choices[8])
+                    cCheck += 10;
+                else if (Dog_choices[8] + 1 == User_choices[8])
+                    cCheck += 5;
+                else if (Dog_choices[8] - 1 == User_choices[8])
+                    cCheck += 5;
+
+                if (Dog_choices[9] == User_choices[9])
+                    cCheck += 10;
+                else if (Dog_choices[9] + 1 == User_choices[9])
+                    cCheck += 5;
+                else if (Dog_choices[9] - 1 == User_choices[9])
+                    cCheck += 5;
+
+                if (cCheck >= 70) {
+                    dogsToAdopt.add(dogSSS.get(counter));
+                    chances.put(dogSSS.get(counter), cCheck);
+                }
             }
 
-            if (dogsToAdopt.size() == 0){
+
+            if (dogsToAdopt.size() == 0) {
                 Log.d("Error: ", "Size = 0, No dogs were found");
-                txt.setText("Sorry, We Couldn't find a dog that match those descriptions");
-            }
-            else {
-                Random r = new Random();
-                List<Integer> temp_check = new ArrayList<>();
-                Log.d("Dog_Size","Dogs size is: " + dogsToAdopt.size());
+                txt.setText("Sorry, We Couldn't find a dog that match these descriptions");
+            } else {
                 tempDogName = "The top dogs for you are:\n\n";
-                if (dogsToAdopt.size() <= 5) {
-                    for (int x = 0; x < dogsToAdopt.size(); x++) {
-                        String dogName = dogsToAdopt.get(x);
-                        tempDogName += dogName + "\n";
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    chances = sortByValue(chances, false);
+                }
+                if (dogsToAdopt.size() >= 5) {
+                    List<String> dogsSorted = new ArrayList<>(chances.keySet());
+                    for (int i = 0; i < 5; i++) {
+                        tempDogName += dogsSorted.get(i) + " " + chances.get(dogsSorted.get(i)) + "%\n";
                     }
+                    txt.setText(tempDogName);
+                    count = 9;
+                    choices.clear();
                 } else {
-                    for (int z = 0; z < 5; z++) {
-                        int random_choice = r.nextInt(dogsToAdopt.size());
-                        temp_check.add(random_choice);
-                        if(temp_check.contains(random_choice) && !(temp_check.get(0) == random_choice))
-                            random_choice = r.nextInt(dogsToAdopt.size());
-                        String dogName = dogsToAdopt.get(random_choice);
-                        Log.d("Choice: ", "Random choices aer: " + random_choice);
-                        tempDogName += dogName + "\n";
+                    for (String s : dogsToAdopt) {
+                        tempDogName += s;
                     }
                 }
-                txt.setText(tempDogName);
-                count = 9;
-                choices.clear();
             }
         });
 
@@ -245,5 +297,19 @@ public class MainActivity extends AppCompatActivity {
             seekBar.setProgress(0);
             MainActivity.this.recreate();
         });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private static Map<String, Integer> sortByValue(Map<String, Integer> unsortMap, final boolean order) {
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(unsortMap.entrySet());
+
+        // Sorting the list based on values
+        list.sort((o1, o2) -> order ? o1.getValue().compareTo(o2.getValue()) == 0
+                ? o1.getKey().compareTo(o2.getKey())
+                : o1.getValue().compareTo(o2.getValue()) : o2.getValue().compareTo(o1.getValue()) == 0
+                ? o2.getKey().compareTo(o1.getKey())
+                : o2.getValue().compareTo(o1.getValue()));
+        return list.stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> b, LinkedHashMap::new));
+
     }
 }
