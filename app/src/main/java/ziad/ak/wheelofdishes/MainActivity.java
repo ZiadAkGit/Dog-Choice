@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     List<String[]> dogSS = new ArrayList<>();
     List<String> dogSSS = new ArrayList<>();
     List<String> dogsToAdopt = new ArrayList<>();
-    List<Integer> random_Choices = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,8 +180,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn1.setOnClickListener(view -> {
-            random_Choices.add(-1);
-            if (choices.size() < 9) {
+            if (choices.size() <= 9) {
                 Toast.makeText(this, "Did you complete the quiz?", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -276,6 +274,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+            btn1.setVisibility(View.INVISIBLE);
         });
 
         btn2.setOnClickListener(view -> {
