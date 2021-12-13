@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         txt.setText(R.string.Playfulness);
                         txtX.setText("Not Playful at all");
                         txtY.setText("Very Playful");
+                        seekBar.setProgress(0);
                         count--;
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             seekBar.setTransitionName("1-4");
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                         txt.setText(R.string.adapt);
                         txtX.setText("Doesn't adapt at all");
                         txtY.setText("Adapts very well");
+                        seekBar.setProgress(0);
                         count--;
                         break;
                     case 3:
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                         txt.setText(R.string.Hot);
                         txtX.setText("Doesn't tolerate at all");
                         txtY.setText("Love hot weather");
+                        seekBar.setProgress(0);
                         count--;
                         break;
                     case 4:
@@ -111,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                         txt.setText(R.string.Cold);
                         txtX.setText("Doesn't tolerate at all");
                         txtY.setText("Love cold weather");
+                        seekBar.setProgress(0);
                         count--;
                         break;
                     case 5:
@@ -118,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                         txt.setText(R.string.lonelyness);
                         txtX.setText("Hate to be lonely");
                         txtY.setText("Love being lonely");
+                        seekBar.setProgress(0);
                         count--;
                         break;
                     case 6:
@@ -125,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         txt.setText(R.string.Sensitivity);
                         txtX.setText("Cold hearted");
                         txtY.setText("Drama queen");
+                        seekBar.setProgress(0);
                         count--;
                         break;
                     case 7:
@@ -132,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                         txt.setText(R.string.Intensity);
                         txtX.setText("Not intense at all");
                         txtY.setText("Very intense");
+                        seekBar.setProgress(0);
                         count--;
                         break;
                     case 8:
@@ -139,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                         txt.setText(R.string.good);
                         txtX.setText("Not new at all");
                         txtY.setText("Just started");
+                        seekBar.setProgress(0);
                         count--;
                         break;
                     case 9:
@@ -146,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
                         txt.setText(R.string.Exercise);
                         txtX.setText("I love my Snorlax");
                         txtY.setText("BEAST MODE ON");
+                        seekBar.setProgress(0);
                         count--;
                         break;
                 }
@@ -193,80 +202,57 @@ public class MainActivity extends AppCompatActivity {
                 //Check which are the best dogs for the choices.
                 if (Dog_choices[0] == User_choices[0])
                     cCheck += 10;
-                else if (Dog_choices[0] + 1 == User_choices[0])
-                    cCheck += 5;
-                else if (Dog_choices[0] - 1 == User_choices[0])
+                else if (Dog_choices[0] + 1 == User_choices[0] || Dog_choices[0] - 1 == User_choices[0])
                     cCheck += 5;
 
                 if (Dog_choices[1] == User_choices[1])
                     cCheck += 10;
-                else if (Dog_choices[1] + 1 == User_choices[1])
-                    cCheck += 5;
-                else if (Dog_choices[1] - 1 == User_choices[1])
+                else if (Dog_choices[1] + 1 == User_choices[1] || Dog_choices[1] - 1 == User_choices[1])
                     cCheck += 5;
 
                 if (Dog_choices[2] == User_choices[2])
                     cCheck += 10;
-                else if (Dog_choices[2] + 1 == User_choices[2])
-                    cCheck += 5;
-                else if (Dog_choices[2] - 1 == User_choices[2])
+                else if (Dog_choices[2] + 1 == User_choices[2] || Dog_choices[2] - 1 == User_choices[2])
                     cCheck += 5;
 
                 if (Dog_choices[3] == User_choices[3])
                     cCheck += 10;
-                else if (Dog_choices[3] + 1 == User_choices[3])
-                    cCheck += 5;
-                else if (Dog_choices[3] - 1 == User_choices[3])
+                else if (Dog_choices[3] + 1 == User_choices[3] || Dog_choices[3] - 1 == User_choices[3])
                     cCheck += 5;
 
                 if (Dog_choices[4] == User_choices[4])
                     cCheck += 10;
-                else if (Dog_choices[4] + 1 == User_choices[4])
-                    cCheck += 5;
-                else if (Dog_choices[4] - 1 == User_choices[4])
+                else if (Dog_choices[4] + 1 == User_choices[4] || Dog_choices[4] - 1 == User_choices[4])
                     cCheck += 5;
 
                 if (Dog_choices[5] == User_choices[5])
                     cCheck += 10;
-                else if (Dog_choices[5] + 1 == User_choices[5])
-                    cCheck += 5;
-                else if (Dog_choices[5] - 1 == User_choices[5])
+                else if (Dog_choices[5] + 1 == User_choices[5] || Dog_choices[5] - 1 == User_choices[5])
                     cCheck += 5;
 
                 if (Dog_choices[6] == User_choices[6])
                     cCheck += 10;
-                else if (Dog_choices[6] + 1 == User_choices[6])
-                    cCheck += 5;
-                else if (Dog_choices[6] - 1 == User_choices[6])
+                else if (Dog_choices[6] + 1 == User_choices[6] || Dog_choices[6] - 1 == User_choices[6])
                     cCheck += 5;
 
                 if (Dog_choices[7] == User_choices[7])
                     cCheck += 10;
-                else if (Dog_choices[7] + 1 == User_choices[7])
-                    cCheck += 5;
-                else if (Dog_choices[7] - 1 == User_choices[7])
+                else if (Dog_choices[7] + 1 == User_choices[7] || Dog_choices[7] - 1 == User_choices[7])
                     cCheck += 5;
 
                 if (Dog_choices[8] == User_choices[8])
                     cCheck += 10;
-                else if (Dog_choices[8] + 1 == User_choices[8])
-                    cCheck += 5;
-                else if (Dog_choices[8] - 1 == User_choices[8])
+                else if (Dog_choices[8] + 1 == User_choices[8] || Dog_choices[8] - 1 == User_choices[8])
                     cCheck += 5;
 
                 if (Dog_choices[9] == User_choices[9])
                     cCheck += 10;
-                else if (Dog_choices[9] + 1 == User_choices[9])
-                    cCheck += 5;
-                else if (Dog_choices[9] - 1 == User_choices[9])
+                else if (Dog_choices[9] + 1 == User_choices[9] || Dog_choices[9] - 1 == User_choices[9])
                     cCheck += 5;
 
-                if (cCheck >= 70) {
-                    dogsToAdopt.add(dogSSS.get(counter));
-                    chances.put(dogSSS.get(counter), cCheck);
-                }
+                dogsToAdopt.add(dogSSS.get(counter));
+                chances.put(dogSSS.get(counter), cCheck);
             }
-
 
             if (dogsToAdopt.size() == 0) {
                 Log.d("Error: ", "Size = 0, No dogs were found");
