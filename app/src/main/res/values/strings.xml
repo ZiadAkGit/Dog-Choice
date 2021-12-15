@@ -2,14 +2,14 @@
     <string name="app_name">DogChoice</string>
     <string name="clicktest">Results!</string>
     <string name="clicktest2">Reset!</string>
-    <string name="adapt">How well does the dog adapts to your apartment?</string>
-    <string name="good">How new are you to dogs?</string>
-    <string name="Sensitivity">How sensitive the dog can be?</string>
-    <string name="lonelyness">How much does the dog tolerates being alone?</string>
-    <string name="Cold">How much does the dog tolerates cold weather?</string>
-    <string name="Hot">How much does the dog tolerates hot weather?</string>
-    <string name="Energy">How energetic is the Dog?</string>
-    <string name="Intensity">How intense is the Dog?</string>
-    <string name="Exercise">How much exercise is needed for the dog?</string>
-    <string name="Playfulness">How playful does the dog?</string>
+    <string name="Energy">From 1 – 5 \nHow energetic the dog can be?</string><!-- 0 -->
+    <string name="Exercise">From 1 – 5 \nHow much exercise is needed for the dog?</string><!-- 1 -->
+    <string name="good">From 1 – 5 \nHow new are you to dogs?</string><!-- 2 -->
+    <string name="Intensity">From 1 – 5 \nHow intense the dog can be?</string><!-- 3 -->
+    <string name="Sensitivity">From 1 – 5 \nHow sensitive the dog can be?</string><!-- 4 -->
+    <string name="lonelyness">From 1 – 5 \nDoes the dog like to be left alone?</string><!-- 5 -->
+    <string name="Cold">From 1 – 5 \nDoes the dog tolerates cold weather?</string><!-- 6 -->
+    <string name="Hot">From 1 – 5 \nDoes the dog stands hot weather?</string><!-- 7 -->
+    <string name="adapt">From 1 – 5 \nHow well does the dog adapts in a small living space?</string><!-- 8 -->
+    <string name="Playfulness">From 1 – 5 \nHow playful does the dog?</string><!-- 9 -->
 </resources>

@@ -37,11 +37,13 @@ public class MainActivity extends AppCompatActivity {
     TextView txt, txtX, txtY;
     int count = 9;
     String tempDogName = "";
-    List<Integer> choices = new ArrayList<>();
+    List<Integer> choices_Values = new ArrayList<>();
+    List<String> choices_Names = new ArrayList<>();
     Map<String, List<String[]>> dogS = new HashMap<>();
     List<String[]> dogSS = new ArrayList<>();
     List<String> dogSSS = new ArrayList<>();
     List<String> dogsToAdopt = new ArrayList<>();
+    List<String> dogsToAdopt2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,26 +76,26 @@ public class MainActivity extends AppCompatActivity {
                 choice = seekBar.getProgress() + 1;
                 switch (count) {
                     case 0:
-                        choices.add(choice);
-                        txt.setText("Click Results button to know your Dogs of choice");
+                        choices_Values.add(choice);
+                        choices_Names.add("Playfulness");
+                        txt.setText("Click Results button to know your dogs of choice");
                         seekBar.setVisibility(View.INVISIBLE);
                         txtX.setVisibility(View.INVISIBLE);
                         txtY.setVisibility(View.INVISIBLE);
                         count--;
                         break;
                     case 1:
-                        choices.add(choice);
+                        choices_Values.add(choice);
+                        choices_Names.add("small house");
                         txt.setText(R.string.Playfulness);
                         txtX.setText("Not Playful at all");
                         txtY.setText("Very Playful");
                         seekBar.setProgress(0);
                         count--;
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            seekBar.setTransitionName("1-4");
-                        }
                         break;
                     case 2:
-                        choices.add(choice);
+                        choices_Values.add(choice);
+                        choices_Names.add("Hot Weather");
                         txt.setText(R.string.adapt);
                         txtX.setText("Doesn't adapt at all");
                         txtY.setText("Adapts very well");
@@ -101,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
                         count--;
                         break;
                     case 3:
-                        choices.add(choice);
+                        choices_Values.add(choice);
+                        choices_Names.add("Cold weather");
                         txt.setText(R.string.Hot);
                         txtX.setText("Doesn't tolerate at all");
                         txtY.setText("Love hot weather");
@@ -109,7 +112,8 @@ public class MainActivity extends AppCompatActivity {
                         count--;
                         break;
                     case 4:
-                        choices.add(choice);
+                        choices_Values.add(choice);
+                        choices_Names.add("Loneylyness");
                         txt.setText(R.string.Cold);
                         txtX.setText("Doesn't tolerate at all");
                         txtY.setText("Love cold weather");
@@ -117,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
                         count--;
                         break;
                     case 5:
-                        choices.add(choice);
+                        choices_Values.add(choice);
+                        choices_Names.add("Sensitivity");
                         txt.setText(R.string.lonelyness);
                         txtX.setText("Hate to be lonely");
                         txtY.setText("Love being lonely");
@@ -125,7 +130,8 @@ public class MainActivity extends AppCompatActivity {
                         count--;
                         break;
                     case 6:
-                        choices.add(choice);
+                        choices_Values.add(choice);
+                        choices_Names.add("Intensity");
                         txt.setText(R.string.Sensitivity);
                         txtX.setText("Cold hearted");
                         txtY.setText("Drama queen");
@@ -133,7 +139,8 @@ public class MainActivity extends AppCompatActivity {
                         count--;
                         break;
                     case 7:
-                        choices.add(choice);
+                        choices_Values.add(choice);
+                        choices_Names.add("New to dogs");
                         txt.setText(R.string.Intensity);
                         txtX.setText("Not intense at all");
                         txtY.setText("Very intense");
@@ -141,7 +148,8 @@ public class MainActivity extends AppCompatActivity {
                         count--;
                         break;
                     case 8:
-                        choices.add(choice);
+                        choices_Values.add(choice);
+                        choices_Names.add("Exercise needed");
                         txt.setText(R.string.good);
                         txtX.setText("Not new at all");
                         txtY.setText("Just started");
@@ -149,7 +157,8 @@ public class MainActivity extends AppCompatActivity {
                         count--;
                         break;
                     case 9:
-                        choices.add(choice);
+                        choices_Values.add(choice);
+                        choices_Names.add("Energy needed");
                         txt.setText(R.string.Exercise);
                         txtX.setText("I love my Snorlax");
                         txtY.setText("BEAST MODE ON");
@@ -164,9 +173,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dog : snapshot.getChildren()) {
-                    //split the attributes to Text <-> Number
                     String[] dogVal = Objects.requireNonNull(dog.getValue()).toString().split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
-                    //adding all dogs to hashmap with list of string array as a value
                     dogSS.add(dogVal);
                     dogS.put(dog.getKey(), dogSS);
                     dogSSS.add(dog.getKey());
@@ -180,12 +187,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn1.setOnClickListener(view -> {
-            if (choices.size() <= 9) {
+            if (choices_Values.size() <= 9) {
                 Toast.makeText(this, "Did you complete the quiz?", Toast.LENGTH_SHORT).show();
                 return;
             }
-            int[] User_choices = {choices.get(0), choices.get(1), choices.get(2), choices.get(3), choices.get(4),
-                    choices.get(5), choices.get(6), choices.get(7), choices.get(8), choices.get(9)};
+
+            for (int K = 0; K < choices_Names.size(); K++) {
+                Log.d(choices_Names.get(K),String.valueOf(choices_Values.get(K)));
+            }
+
+
+            int[] User_choices = {choices_Values.get(0), choices_Values.get(1), choices_Values.get(2), choices_Values.get(3), choices_Values.get(4),
+                    choices_Values.get(5), choices_Values.get(6), choices_Values.get(7), choices_Values.get(8), choices_Values.get(9)};
 
             Map<String, Integer> chances = new HashMap<>();
 
@@ -248,30 +261,46 @@ public class MainActivity extends AppCompatActivity {
                 else if (Dog_choices[9] + 1 == User_choices[9] || Dog_choices[9] - 1 == User_choices[9])
                     cCheck += 5;
 
-                dogsToAdopt.add(dogSSS.get(counter));
+                if(cCheck >= 70)
+                    dogsToAdopt.add(dogSSS.get(counter));
+                else
+                    dogsToAdopt2.add(dogSSS.get(counter));
+
                 chances.put(dogSSS.get(counter), cCheck);
             }
 
-            if (dogsToAdopt.size() == 0) {
-                Log.d("Error: ", "Size = 0, No dogs were found");
+            if (dogsToAdopt.size() == 0 && dogsToAdopt2.size() == 0) {
+                Log.d("SIZE ", "0, No dogs were found");
                 txt.setText("Sorry, We Couldn't find a dog that match these descriptions");
             } else {
                 tempDogName = "The top dogs for you are:\n\n";
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     chances = sortByValue(chances, false);
                 }
+
                 if (dogsToAdopt.size() >= 5) {
                     List<String> dogsSorted = new ArrayList<>(chances.keySet());
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < 5; i++)
                         tempDogName += dogsSorted.get(i) + " " + chances.get(dogsSorted.get(i)) + "%\n";
-                    }
+
                     txt.setText(tempDogName);
                     count = 9;
-                    choices.clear();
+                    choices_Values.clear();
+                    choices_Names.clear();
                 } else {
-                    for (String s : dogsToAdopt) {
-                        tempDogName += s;
+                    if(dogsToAdopt2.size() >= 5){
+                        List<String> dogsSorted = new ArrayList<>(chances.keySet());
+                        for (int i = 0; i < 5; i++)
+                            tempDogName += dogsSorted.get(i) + " " + chances.get(dogsSorted.get(i)) + "%\n";
+
+                        txt.setText(tempDogName);
+                        count = 9;
+                        choices_Values.clear();
+                        choices_Names.clear();
                     }
+                    else
+                        for (String s : dogsToAdopt)
+                            tempDogName += s;
                 }
             }
             btn1.setVisibility(View.INVISIBLE);
