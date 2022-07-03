@@ -269,9 +269,11 @@ public class MainActivity extends AppCompatActivity {
                 chances.put(dogSSS.get(counter), cCheck);
             }
 
+            Log.d("CheckdogSSS","The size is: " + dogSSS.size());
+
             if (dogsToAdopt.size() == 0 && dogsToAdopt2.size() == 0) {
                 Log.d("SIZE ", "0, No dogs were found");
-                txt.setText("Sorry, We Couldn't find a dog that match these descriptions");
+                txt.setText("Sorry, We Couldn't find dogs that match these descriptions at this time\nClick Reset button to start again!");
             } else {
                 tempDogName = "The top dogs for you are:\n\n";
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -281,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
                 if (dogsToAdopt.size() >= 5) {
                     List<String> dogsSorted = new ArrayList<>(chances.keySet());
                     for (int i = 0; i < 5; i++)
-                        tempDogName += dogsSorted.get(i) + " " + chances.get(dogsSorted.get(i)) + "%\n";
+                        tempDogName += dogsSorted.get(i) + " with " + chances.get(dogsSorted.get(i)) + "% chances\n";
 
                     txt.setText(tempDogName);
                     count = 9;
@@ -291,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
                     if(dogsToAdopt2.size() >= 5){
                         List<String> dogsSorted = new ArrayList<>(chances.keySet());
                         for (int i = 0; i < 5; i++)
-                            tempDogName += dogsSorted.get(i) + " " + chances.get(dogsSorted.get(i)) + "%\n";
+                            tempDogName += chances.get(dogsSorted.get(i))+ "% - " + dogsSorted.get(i) + "%\n";
 
                         txt.setText(tempDogName);
                         count = 9;
