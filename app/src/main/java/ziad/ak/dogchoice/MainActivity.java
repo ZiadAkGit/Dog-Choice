@@ -28,9 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
-import ziad.ak.dogchoice.R;
-
+@SuppressLint("SetTextI18n")
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
