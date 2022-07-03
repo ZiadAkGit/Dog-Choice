@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         txtX = findViewById(R.id.txtviewX);
         txtY = findViewById(R.id.txtviewY);
         Button result_btn = findViewById(R.id.button);
-        Button resest_btn = findViewById(R.id.button2);
+        Button reset_btn = findViewById(R.id.button2);
         SeekBar seekBar = findViewById(R.id.seekBar1);
         txt.setText(R.string.Energy);
         txtX.setText("Loves it's bed");
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 4:
                         choices_Values.add(choice);
-                        choices_Names.add("Loneylyness");
+                        choices_Names.add("Loneliness");
                         txt.setText(R.string.Cold);
                         txtX.setText("Doesn't tolerate at all");
                         txtY.setText("Love cold weather");
@@ -339,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
             result_btn.setVisibility(View.INVISIBLE);
         });
 
-        resest_btn.setOnClickListener(view -> {
+        reset_btn.setOnClickListener(view -> {
             seekBar.clearFocus();
             seekBar.setProgress(0);
             MainActivity.this.recreate();
