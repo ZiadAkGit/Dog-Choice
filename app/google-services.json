@@ -8,12 +8,49 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:427546273054:android:9907cf3dc5919fd5f6950f",
+        "android_client_info": {
+          "package_name": "ziad.ak.dogchoice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427546273054-qodicvqiubova3apudh3d7ubiok8fqa5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdnJfl2mzHcUtPvU65xtCpknY-rbZLCyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427546273054-qodicvqiubova3apudh3d7ubiok8fqa5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:427546273054:android:7366065b1af2bd77f6950f",
         "android_client_info": {
           "package_name": "ziad.ak.wheelofdishes"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "427546273054-4h79f39c88116qm92lltsophl1t7tibk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ziad.ak.wheelofdishes",
+            "certificate_hash": "eb99b2ccee1663ba61b14102d43dc74e07656feb"
+          }
+        },
         {
           "client_id": "427546273054-qodicvqiubova3apudh3d7ubiok8fqa5.apps.googleusercontent.com",
           "client_type": 3

@@ -5,7 +5,7 @@ android {
     compileSdkVersion 31
 
     defaultConfig {
-        applicationId "ziad.ak.wheelofdishes"
+        applicationId "ziad.ak.dogchoice"
         minSdkVersion 16
         targetSdkVersion 31
         versionCode 1

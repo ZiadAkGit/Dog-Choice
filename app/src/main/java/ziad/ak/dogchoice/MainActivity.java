@@ -1,8 +1,4 @@
-package ziad.ak.wheelofdishes;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
+package ziad.ak.dogchoice;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
@@ -13,6 +9,10 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,8 +27,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Random;
 import java.util.stream.Collectors;
+
+import ziad.ak.dogchoice.R;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -36,14 +37,28 @@ public class MainActivity extends AppCompatActivity {
     int choice = 0;
     TextView txt, txtX, txtY;
     int count = 9;
-    String tempDogName = "";
+    String publishedString = "";
     List<Integer> choices_Values = new ArrayList<>();
     List<String> choices_Names = new ArrayList<>();
     Map<String, List<String[]>> dogS = new HashMap<>();
     List<String[]> dogSS = new ArrayList<>();
     List<String> dogSSS = new ArrayList<>();
-    List<String> dogsToAdopt = new ArrayList<>();
-    List<String> dogsToAdopt2 = new ArrayList<>();
+    List<String> largerThan70 = new ArrayList<>();
+    List<String> smallerThan70 = new ArrayList<>();
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private static Map<String, Integer> sortByValue(Map<String, Integer> unsortMap, final boolean order) {
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(unsortMap.entrySet());
+
+        // Sorting the list based on values
+        list.sort((o1, o2) -> order ? o1.getValue().compareTo(o2.getValue()) == 0
+                ? o1.getKey().compareTo(o2.getKey())
+                : o1.getValue().compareTo(o2.getValue()) : o2.getValue().compareTo(o1.getValue()) == 0
+                ? o2.getKey().compareTo(o1.getKey())
+                : o2.getValue().compareTo(o1.getValue()));
+        return list.stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> b, LinkedHashMap::new));
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
         txt = findViewById(R.id.textView2);
         txtX = findViewById(R.id.txtviewX);
         txtY = findViewById(R.id.txtviewY);
-        Button btn1 = findViewById(R.id.button);
-        Button btn2 = findViewById(R.id.button2);
+        Button result_btn = findViewById(R.id.button);
+        Button resest_btn = findViewById(R.id.button2);
         SeekBar seekBar = findViewById(R.id.seekBar1);
         txt.setText(R.string.Energy);
         txtX.setText("Loves it's bed");
@@ -186,16 +201,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn1.setOnClickListener(view -> {
+        result_btn.setOnClickListener(view -> {
             if (choices_Values.size() <= 9) {
                 Toast.makeText(this, "Did you complete the quiz?", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             for (int K = 0; K < choices_Names.size(); K++) {
-                Log.d(choices_Names.get(K),String.valueOf(choices_Values.get(K)));
+                Log.d(choices_Names.get(K), String.valueOf(choices_Values.get(K)));
             }
-
 
             int[] User_choices = {choices_Values.get(0), choices_Values.get(1), choices_Values.get(2), choices_Values.get(3), choices_Values.get(4),
                     choices_Values.get(5), choices_Values.get(6), choices_Values.get(7), choices_Values.get(8), choices_Values.get(9)};
@@ -213,119 +227,124 @@ public class MainActivity extends AppCompatActivity {
                 //Check which are the best dogs for the choices.
                 if (Dog_choices[0] == User_choices[0])
                     cCheck += 10;
-                else if (Dog_choices[0] + 1 == User_choices[0] || Dog_choices[0] - 1 == User_choices[0])
+                else if (Dog_choices[0] + 1 == User_choices[0])
                     cCheck += 5;
+                else if (Dog_choices[0] - 1 == User_choices[0])
+                    cCheck += 4;
 
                 if (Dog_choices[1] == User_choices[1])
                     cCheck += 10;
-                else if (Dog_choices[1] + 1 == User_choices[1] || Dog_choices[1] - 1 == User_choices[1])
+                else if (Dog_choices[1] + 1 == User_choices[1])
                     cCheck += 5;
+                else if (Dog_choices[1] - 1 == User_choices[1])
+                    cCheck += 4;
 
                 if (Dog_choices[2] == User_choices[2])
                     cCheck += 10;
-                else if (Dog_choices[2] + 1 == User_choices[2] || Dog_choices[2] - 1 == User_choices[2])
+                else if (Dog_choices[2] + 1 == User_choices[2])
                     cCheck += 5;
+                else if (Dog_choices[2] - 1 == User_choices[2])
+                    cCheck += 4;
 
                 if (Dog_choices[3] == User_choices[3])
                     cCheck += 10;
-                else if (Dog_choices[3] + 1 == User_choices[3] || Dog_choices[3] - 1 == User_choices[3])
+                else if (Dog_choices[3] + 1 == User_choices[3])
                     cCheck += 5;
+                else if (Dog_choices[3] - 1 == User_choices[3])
+                    cCheck += 4;
 
                 if (Dog_choices[4] == User_choices[4])
                     cCheck += 10;
-                else if (Dog_choices[4] + 1 == User_choices[4] || Dog_choices[4] - 1 == User_choices[4])
+                else if (Dog_choices[4] + 1 == User_choices[4])
                     cCheck += 5;
+                else if (Dog_choices[4] - 1 == User_choices[4])
+                    cCheck += 4;
 
                 if (Dog_choices[5] == User_choices[5])
                     cCheck += 10;
-                else if (Dog_choices[5] + 1 == User_choices[5] || Dog_choices[5] - 1 == User_choices[5])
+                else if (Dog_choices[5] + 1 == User_choices[5])
                     cCheck += 5;
+                else if (Dog_choices[5] - 1 == User_choices[5])
+                    cCheck += 4;
 
                 if (Dog_choices[6] == User_choices[6])
                     cCheck += 10;
-                else if (Dog_choices[6] + 1 == User_choices[6] || Dog_choices[6] - 1 == User_choices[6])
+                else if (Dog_choices[6] + 1 == User_choices[6])
                     cCheck += 5;
+                else if (Dog_choices[6] - 1 == User_choices[6])
+                    cCheck += 4;
 
                 if (Dog_choices[7] == User_choices[7])
                     cCheck += 10;
-                else if (Dog_choices[7] + 1 == User_choices[7] || Dog_choices[7] - 1 == User_choices[7])
+                else if (Dog_choices[7] + 1 == User_choices[7])
                     cCheck += 5;
+                else if (Dog_choices[7] - 1 == User_choices[7])
+                    cCheck += 4;
 
                 if (Dog_choices[8] == User_choices[8])
                     cCheck += 10;
-                else if (Dog_choices[8] + 1 == User_choices[8] || Dog_choices[8] - 1 == User_choices[8])
+                else if (Dog_choices[8] + 1 == User_choices[8])
                     cCheck += 5;
+                else if (Dog_choices[8] - 1 == User_choices[8])
+                    cCheck += 4;
 
                 if (Dog_choices[9] == User_choices[9])
                     cCheck += 10;
-                else if (Dog_choices[9] + 1 == User_choices[9] || Dog_choices[9] - 1 == User_choices[9])
+                else if (Dog_choices[9] + 1 == User_choices[9])
                     cCheck += 5;
+                else if (Dog_choices[9] - 1 == User_choices[9])
+                    cCheck += 4;
 
-                if(cCheck >= 70)
-                    dogsToAdopt.add(dogSSS.get(counter));
+                if (cCheck >= 70)
+                    largerThan70.add(dogSSS.get(counter));
                 else
-                    dogsToAdopt2.add(dogSSS.get(counter));
+                    smallerThan70.add(dogSSS.get(counter));
 
                 chances.put(dogSSS.get(counter), cCheck);
             }
 
-            Log.d("CheckdogSSS","The size is: " + dogSSS.size());
+            Log.d("CheckdogSSS", "The size is: " + dogSSS.size());
 
-            if (dogsToAdopt.size() == 0 && dogsToAdopt2.size() == 0) {
+            if (largerThan70.size() == 0 && smallerThan70.size() == 0) {
                 Log.d("SIZE ", "0, No dogs were found");
-                txt.setText("Sorry, We Couldn't find dogs that match these descriptions at this time\nClick Reset button to start again!");
+                txt.setText("Sorry, At this time we Couldn't find any dogs that match these descriptions\nClick Reset button to start again!");
             } else {
-                tempDogName = "The top dogs for you are:\n\n";
+                publishedString = "The top dogs for you are:\n\n";
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     chances = sortByValue(chances, false);
                 }
 
-                if (dogsToAdopt.size() >= 5) {
+                if (largerThan70.size() >= 5) {
                     List<String> dogsSorted = new ArrayList<>(chances.keySet());
                     for (int i = 0; i < 5; i++)
-                        tempDogName += dogsSorted.get(i) + " with " + chances.get(dogsSorted.get(i)) + "% chances\n";
+                        publishedString += dogsSorted.get(i) + " with " + chances.get(dogsSorted.get(i)) + "% chances\n";
 
-                    txt.setText(tempDogName);
+                    txt.setText(publishedString);
                     count = 9;
                     choices_Values.clear();
                     choices_Names.clear();
                 } else {
-                    if(dogsToAdopt2.size() >= 5){
+                    if (smallerThan70.size() >= 5) {
                         List<String> dogsSorted = new ArrayList<>(chances.keySet());
                         for (int i = 0; i < 5; i++)
-                            tempDogName += chances.get(dogsSorted.get(i))+ "% - " + dogsSorted.get(i) + "%\n";
+                            publishedString += chances.get(dogsSorted.get(i)) + "% - " + dogsSorted.get(i) + "%\n";
 
-                        txt.setText(tempDogName);
+                        txt.setText(publishedString);
                         count = 9;
                         choices_Values.clear();
                         choices_Names.clear();
-                    }
-                    else
-                        for (String s : dogsToAdopt)
-                            tempDogName += s;
+                    } else
+                        for (String s : largerThan70)
+                            publishedString += s;
                 }
             }
-            btn1.setVisibility(View.INVISIBLE);
+            result_btn.setVisibility(View.INVISIBLE);
         });
 
-        btn2.setOnClickListener(view -> {
+        resest_btn.setOnClickListener(view -> {
             seekBar.clearFocus();
             seekBar.setProgress(0);
             MainActivity.this.recreate();
         });
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private static Map<String, Integer> sortByValue(Map<String, Integer> unsortMap, final boolean order) {
-        List<Map.Entry<String, Integer>> list = new LinkedList<>(unsortMap.entrySet());
-
-        // Sorting the list based on values
-        list.sort((o1, o2) -> order ? o1.getValue().compareTo(o2.getValue()) == 0
-                ? o1.getKey().compareTo(o2.getKey())
-                : o1.getValue().compareTo(o2.getValue()) : o2.getValue().compareTo(o1.getValue()) == 0
-                ? o2.getKey().compareTo(o1.getKey())
-                : o2.getValue().compareTo(o1.getValue()));
-        return list.stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> b, LinkedHashMap::new));
-
     }
 }
