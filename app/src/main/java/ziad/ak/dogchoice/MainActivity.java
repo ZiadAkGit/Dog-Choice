@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                         choices_Names.add("Cold weather");
                         txt.setText(R.string.Hot);
                         txtX.setText("Doesn't tolerate at all");
-                        txtY.setText("Love hot weather");
+                        txtY.setText("Love the Desert");
                         seekBar.setProgress(0);
                         count--;
                         break;
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                         choices_Names.add("Loneliness");
                         txt.setText(R.string.Cold);
                         txtX.setText("Doesn't tolerate at all");
-                        txtY.setText("Love cold weather");
+                        txtY.setText("Love the Snow");
                         seekBar.setProgress(0);
                         count--;
                         break;
