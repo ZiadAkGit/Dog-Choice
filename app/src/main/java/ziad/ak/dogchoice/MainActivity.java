@@ -325,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
                     if (smallerThan70.size() >= 5) {
                         List<String> dogsSorted = new ArrayList<>(chances.keySet());
                         for (int i = 0; i < 5; i++)
-                            publishedString += chances.get(dogsSorted.get(i)) + "% - " + dogsSorted.get(i) + "%\n";
+                            publishedString += chances.get(dogsSorted.get(i)) + " with " + chances.get(dogsSorted.get(i)) + "% chances\n";
 
                         txt.setText(publishedString);
                         count = 9;
